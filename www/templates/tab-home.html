@@ -1,0 +1,42 @@
+<ion-view hide-nav-bar="true" class="Home">
+  <ion-content class="wrapper" ng-class="time">
+    <div class="welcome" ng-show="time === 'morning'" ng-hide="time != 'morning'">
+      <h2 class="text-center HomeTitle">Good Morning! <br> Today is</h2>
+      <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
+      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
+      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+    </div>
+
+    <div class="welcome" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+      <h2 class="text-center HomeTitle">Good Afternoon! <br> Today is</h2>
+      <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
+      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
+      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+    </div>
+
+    <div class="welcome" ng-show="time === 'night'" ng-hide="time != 'night'">
+      <h2 class="text-center HomeTitle">Good Evening! <br> Today is</h2>
+      <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
+      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
+      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+    </div>
+
+    <div class="box">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="../img/icon.png" class="icon" alt="">
+          </div>
+          <div class="col-md-7">
+            <h4 class="text-center up">UP NEXT:</h4>
+            <p class="text-center hour">11am-11:45am</p>
+            <h4 class="text-center topic">Math Tutoring</h4>
+          </div>
+          <div class="col-md-1">
+            <a ui-sref="task-view" class="button icon-right ion-chevron-right arrow"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
