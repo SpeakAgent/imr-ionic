@@ -29,26 +29,26 @@
 
 .afternoon {
 	background: #6FAEC7;
-	background: url(../img/clouds.png) no-repeat 50% 40%, -moz-linear-gradient(top, #6FAEC7 0%, ##7CC1E6 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-gradient(linear, 0% 0%,0% 100%, from(#6FAEC7), to(##7CC1E6));
-	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-linear-gradient(top, #6FAEC7 0%,##7CC1E6 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -o-linear-gradient(top, #6FAEC7 0%,##7CC1E6 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -ms-linear-gradient(top, #6FAEC7 0%,##7CC1E6 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, linear-gradient(top, #6FAEC7 0%,##7CC1E6 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -moz-linear-gradient(top, #6FAEC7 0%, #7CC1E6 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-gradient(linear, 0% 0%,0% 100%, from(#6FAEC7), to(#7CC1E6));
+	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-linear-gradient(top, #6FAEC7 0%,#7CC1E6 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -o-linear-gradient(top, #6FAEC7 0%,#7CC1E6 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -ms-linear-gradient(top, #6FAEC7 0%,#7CC1E6 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, linear-gradient(top, #6FAEC7 0%,#7CC1E6 100%);
 }
 
 .night {
 	background: #3B84A8;
-	background: url(../img/clouds.png) no-repeat 50% 40%, -moz-linear-gradient(top, #3B84A8 0%, ##1E5885 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-gradient(linear, 0% 0%,0% 100%, from(#3B84A8), to(##1E5885));
-	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-linear-gradient(top, #3B84A8 0%,##1E5885 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -o-linear-gradient(top, #3B84A8 0%,##1E5885 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, -ms-linear-gradient(top, #3B84A8 0%,##1E5885 100%);
-	background: url(../img/clouds.png) no-repeat 50% 40%, linear-gradient(top, #3B84A8 0%,##1E5885 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -moz-linear-gradient(top, #3B84A8 0%, #1E5885 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-gradient(linear, 0% 0%,0% 100%, from(#3B84A8), to(#1E5885));
+	background: url(../img/clouds.png) no-repeat 50% 40%, -webkit-linear-gradient(top, #3B84A8 0%,#1E5885 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -o-linear-gradient(top, #3B84A8 0%,#1E5885 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, -ms-linear-gradient(top, #3B84A8 0%,#1E5885 100%);
+	background: url(../img/clouds.png) no-repeat 50% 40%, linear-gradient(top, #3B84A8 0%,#1E5885 100%);
 }
 
 .HomeTitle{
-	color: white;
+	color: #fff;
 	margin: 180px 0 36px 0!important;
 	font-family: 'Roboto Slab', serif;
 	font-weight: bold;
@@ -58,7 +58,7 @@
 
 .HomeDay {
 	margin-top: -20px;
-	color: white;
+	color: #fff;
 	font-family: 'Roboto Slab', serif;;
 	font-weight: bold;
 	font-size: 35px;
@@ -66,25 +66,35 @@
 }
 
 .HomeMonth {
-	color: white;
+	color: #fff;
 	margin-top: 10px;
 	font-family: 'Roboto Slab', serif;;
 	font-weight: bold;
 }
 
 .HomeNumber {
-	color: white;
+	color: #fff;
 	margin-top: -15px;
 	font-size: 50px;
 	font-weight: bold;
 }
 
 .box {
-	background: white;
+	background: #fff;
 	width: auto;
-	margin-left: 32px;
 	margin-top: 96px;
+}
 
+.morningBox {
+	border-left: solid 32px #F9B71A;
+}
+
+.afternoonBox {
+	border-left: solid 32px #408940;
+}
+
+.nightBox {
+	border-left: solid 32px #462C83;
 }
 
 .icon {
@@ -150,12 +160,12 @@
 }
 
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated{
-	color: white!important;
+	color: #fff!important;
 	background: #38C1F5!important;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item {
-	color: white!important;
+	color: #fff!important;
 }
 
 .button{
@@ -182,7 +192,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 }
 
 .headerTask {
-	background: white;
+	background: #fff;
 	height: 145px;
 }
 
@@ -406,7 +416,7 @@ md-option {
 }
 
 .profileCard {
-	background: white;
+	background: #fff;
 }
 
 .iLiveAtIcon {
@@ -455,7 +465,7 @@ ul {
 }
 
 .helpBorder {
-	border-bottom: 4px solid white;
+	border-bottom: 4px solid #fff;
 }
 
 #helpTitle {
@@ -485,7 +495,7 @@ ul {
 
 .emergencyHeader {
 	height: 80px;
-	background: white;
+	background: #fff;
 }
 
 .tabs .tab-item .home {
@@ -541,6 +551,9 @@ ul {
 
 .weekPanel {
     background-color: #DDDDDD !important;
-    margin: 0 -14px 0 -14px;
-    padding-bottom: 0%;
+    margin: 0 -15px 0 -15px;
+}
+
+.weekPanel h5 {
+	margin-left: 15px;
 }

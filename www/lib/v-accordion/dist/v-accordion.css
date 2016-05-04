@@ -78,12 +78,11 @@ v-pane-content {
   .vAccordion--default v-pane.is-expanded > v-pane-header {
     border-bottom-color: #2196F3; }
     .vAccordion--default v-pane.is-expanded > v-pane-header::after {
-      -webkit-transform: rotate(90deg);
-              transform: rotate(90deg);
-      opacity: 0; }
+              content: "\f126";}
     .vAccordion--default v-pane.is-expanded > v-pane-header::before {
-      -webkit-transform: rotate(0deg);
-              transform: rotate(0deg); }
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg);
+              content: "";}
   .vAccordion--default v-pane.is-expanded > v-pane-content > div {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
@@ -97,21 +96,21 @@ v-pane-content {
   -webkit-transition: all 0.25s;
           transition: all 0.25s; }
   .vAccordion--default v-pane-header::after, .vAccordion--default v-pane-header::before {
-    content: '';
+    font-family: "Ionicons";
+    content: "\f123";
     display: block;
     position: absolute;
-    top: 50%;
-    right: 0;
+    top: 25%;
+    right: 15px;
     width: 10px;
     height: 1px;
-    background-color: #2196F3;
+    font-size: 20px;
+    color: #2196F3;
     -webkit-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
     will-change: transform;
     -webkit-transition: all 0.25s;
             transition: all 0.25s; }
-  .vAccordion--default v-pane-header::before {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg); }
+  .vAccordion--default v-pane-header::before {}
   .vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus {
     color: #2196F3; }

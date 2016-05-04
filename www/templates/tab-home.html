@@ -21,15 +21,35 @@
       <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
     </div>
 
-    <div class="box">
+    <div ng-class="timeBox" class="box">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" ng-show="time === 'morning'" ng-hide="time != 'morning'">
             <img src="../img/icon.png" class="icon" alt="">
           </div>
-          <div class="col-md-7">
+
+          <div class="col-md-4" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+            <img src="../img/MyWork-Icon.png" class="icon" alt="">
+          </div>
+
+          <div class="col-md-4" ng-show="time === 'night'" ng-hide="time != 'night'">
+            <img src="../img/Life_icon.png" class="icon" alt="">
+          </div>
+          <div class="col-md-7" ng-show="time === 'morning'" ng-hide="time != 'morning'">
             <h4 class="text-center up">UP NEXT:</h4>
-            <p class="text-center hour">11am-11:45am</p>
+            <p class="text-center hour">6am-12:00pm</p>
+            <h4 class="text-center topic">Math Tutoring</h4>
+          </div>
+
+          <div class="col-md-7" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+            <h4 class="text-center up">UP NEXT:</h4>
+            <p class="text-center hour">12pm-6pm</p>
+            <h4 class="text-center topic">Math Tutoring</h4>
+          </div>
+
+          <div class="col-md-7" ng-show="time === 'night'" ng-hide="time != 'night'">
+            <h4 class="text-center up">UP NEXT:</h4>
+            <p class="text-center hour">6pm-6am</p>
             <h4 class="text-center topic">Math Tutoring</h4>
           </div>
           <div class="col-md-1">

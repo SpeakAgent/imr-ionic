@@ -8,11 +8,14 @@ angular.module('starter.controllers', ['ngMaterial'])
   var h = new Date().getHours();
   if (h >= 6 && h < 12) {
     $scope.time="morning"
+    $scope.timeBox="morningBox"
   }
   else if (h >= 12 && h <= 18) {
     $scope.time="afternoon";
+    $scope.timeBox="afternoonBox";
   } else {
     $scope.time="night";
+    $scope.timeBox="nightBox";
   }
   console.log(h);
   console.log($scope.time);
