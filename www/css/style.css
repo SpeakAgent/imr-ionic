@@ -100,6 +100,7 @@
 .icon {
 	margin-top: 32px;
 	margin-bottom: 32px;
+	margin-right: 32px;
 }
 
 .icon2 {
@@ -108,15 +109,15 @@
 
 .up {
 	margin-left: -12px;
-	color: #0C8DEE;
+		color: #20A7E1;
 }
 
 .hour {
-	color: #182592;
+	color: #00486E;
 }
 
 .topic {
-	color: #182592;
+	color: #00486E;
 	font-weight: bold;
 }
 .arrow {
@@ -124,7 +125,8 @@
 	margin-bottom: 32px;
 	position: relative;
     left: 50px;
-    top: 5px;
+    top: 15px;
+	color: #20A7E1;
 }
 
 .rightArrow {
@@ -156,7 +158,9 @@
 }
 
 .tabs {
-	background-color: #1C374A!important;
+	background-color: #00486E;
+	padding-top: 0px;
+	height: 60px;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated{
@@ -276,7 +280,7 @@ md-select {
 }
 
 a.md-default-theme:not(.md-button), a:not(.md-button) {
-	color: #38B5F5;
+	color: #20A7E1;
 }
 
 a.md-default-theme:not(.md-button), a:not(.md-button):hover {
