@@ -79,6 +79,10 @@
 	font-weight: bold;
 }
 
+.homeTask {
+	padding: 0 !important;
+}
+
 .box {
 	background: #fff;
 	width: auto;
