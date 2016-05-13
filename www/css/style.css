@@ -374,6 +374,10 @@ md-option {
 	padding-top: 100px;
 }
 
+.profile-content {
+	padding-bottom: 24px;
+}
+
 #contentEmergency {
 	position: relative;
 	background-color: #EAEAEA;
@@ -400,7 +404,7 @@ md-option {
 #profile-image {
 	display: block;
 	border-radius: 100px;
-	border: 4px solid #EBEBED;
+	border: 8px solid #EBEBED;
 	width: 120px;
 	height: 120px;
 	margin: 36px auto 0;
@@ -421,6 +425,15 @@ md-option {
 	border: 4px solid #FB3713;
 	width: 80px;
 	height: 80px;
+}
+
+.card {
+	margin: 20px 10px 16px !important;
+}
+
+.item h2 {
+	font-size: 14px !important;
+	line-height: 20px !important;
 }
 
 .profileCard {
