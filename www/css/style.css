@@ -81,6 +81,7 @@
 
 .homeTask {
 	padding: 0 !important;
+	margin: 0px -38px !important;
 }
 
 .box {
@@ -386,6 +387,7 @@ md-option {
 	position: relative;
 	background-color: #EAEAEA;
 	padding-top: 100px;
+	padding-bottom: 24px;
 	height: 200px;
 }
 
@@ -399,7 +401,8 @@ md-option {
 
 #profile-name {
 	color: #0593DF;
-	font-size: 32px;
+	font-size: 24px;
+	line-height: 32px;
 	font-family: 'Roboto Slab', serif;
 	font-weight: bold;
 	margin: 0;
@@ -463,15 +466,14 @@ ul {
 	color: #00355D;
 	font-size: 14px !important;
 	line-height: 16px;
-	font-family: 'Roboto Slab', serif;
 	font-weight: bold!important;
 	margin-bottom: 10px!important;
 }
 
 .subtitleEmergency {
 	color: #00355D;
-	font-size: 16px!important;
-	font-family: 'Roboto Slab', serif;
+	font-size: 14px!important;
+	line-height: 16px;
 	font-weight: bold!important;
 	margin-bottom: 5px;
 }
@@ -483,6 +485,13 @@ ul {
 	font-weight: bold!important;
 	margin-bottom: 5px;
 	margin-left: 20px;
+}
+
+.emergency-card li {
+	color: #4A4A4A;
+	font-size: 16px;
+	line-height: 21px;
+	font-family: 'Roboto Slab', serif;
 }
 
 .valign {
@@ -519,7 +528,8 @@ ul {
 
 .Heading-Alert {
 	color: #FB3713;
-	font-size: 18px;
+	font-size: 16px;
+	line-height: 19px;
 	font-weight: bold;
 	margin-left: 20px;
 }
