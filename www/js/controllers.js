@@ -9,13 +9,16 @@ angular.module('starter.controllers', ['ngMaterial'])
   if (h >= 6 && h < 12) {
     $scope.time="morning"
     $scope.timeBox="morningBox"
+    $scope.timeHeader="morningHeader";
   }
   else if (h >= 12 && h <= 18) {
     $scope.time="afternoon";
     $scope.timeBox="afternoonBox";
+    $scope.timeHeader="afternoonHeader";
   } else {
     $scope.time="night";
     $scope.timeBox="nightBox";
+    $scope.timeHeader="nightHeader";
   }
   console.log(h);
   console.log($scope.time);
@@ -61,6 +64,7 @@ angular.module('starter.controllers', ['ngMaterial'])
   this.selectTab = function(setTab) {
     this.tab = setTab;
   };
+
   this.isSelected = function(checkTab) {
     return this.tab === checkTab;
   }
@@ -69,7 +73,14 @@ angular.module('starter.controllers', ['ngMaterial'])
     var firstPane = $scope.panes[0];
     $scope.accordion.toggle(firstPane.id);
   });
+
   $scope.myGoBack = function() {
     $ionicHistory.goBack();
   };
+
+  $scope.done = false;
+  $scope.doneTask = function() {
+    $scope.done = true;
+  };
+
 });

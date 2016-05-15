@@ -83,6 +83,11 @@
 	padding: 0 !important;
 }
 
+.homeNightTask {
+	padding: 0 !important;
+	margin: 0 -50px 0 -25px;
+}
+
 .box {
 	background: #fff;
 	width: auto;
@@ -99,6 +104,26 @@
 
 .nightBox {
 	border-left: solid 32px #462C83;
+}
+
+.morningHeader {
+	background-color: #F9B71A;
+	height: 36px;
+}
+
+.afternoonHeader {
+	background-color: #408940;
+	height: 36px;
+}
+
+.nightHeader {
+	background-color: #462C83;
+	height: 36px;
+}
+
+.bar-header a {
+	color: #fff !important;
+	margin: -3px 0px 0 93%;
 }
 
 .icon {
@@ -155,10 +180,12 @@
 
 .arrow3 {
 	margin-top: -10px;
+	color: #4A4A4A !important;
 }
 
 .nextStep {
-	line-height: 60px;
+	line-height: 65px;
+	color: #20A7E1 !important;
 }
 
 .tabs {
@@ -187,8 +214,18 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 .listSchedule {
 	width: 49%;
 	border-radius: 2px;
-	border: solid 1px #00B6FF;
+	border: solid 1px #20A7E1;
 	margin: -10px 0 0 0;
+}
+
+.tube {
+    width: 35px;
+    margin: 0px -5px !important;
+}
+
+.nav-pills>li.active>a {
+	background-color: #20A7E1 !important;
+	color: #fff !important;
 }
 
 .item-select select {
@@ -199,9 +236,15 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	background: #EEE;
 }
 
+.task-item {
+	background: #fff;
+	border: none !important;
+}
+
 .headerTask {
 	background: #fff;
 	height: 145px;
+	margin-top: 36px;
 }
 
 .stepsButtons {
@@ -209,15 +252,18 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	z-index: 2;
 	position: relative;
 	line-height: 12px;
+	margin-left: 7px;
+	border-color: #20A7E1 !important;
 }
 
 .doneButton {
-	width: 45px;
+	width: 55px;
 	height: 25px;
 	font-size: 12px;
-	color: #0E1B42!important;
-	border-color: #0E1B42!important;
-	margin-top: 4px;
+	color: #00486E!important;
+	border-color: #00486E!important;
+	padding: 4px 8px;
+	margin: 5px 5px 0;
 }
 
 .speakButton {
@@ -227,10 +273,32 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	color: #00486E !important;
 	border-color: #00486E !important;
 	padding: 4px 8px;
+	float: left;
+}
+
+.speakView {
+	position: absolute;
+    left: 40px;
+    top: 5px;
 }
 
 .speaker {
 	width: 16px;
+}
+
+.checkmark {
+	font-size: 18px;
+    color: #BEBEBE;
+	position: relative;
+	top: 5px;
+}
+
+.checkmarkDone {
+	font-size: 30px;
+	color: #4DC24E;
+	position: relative;
+	top: 5px;
+	margin-left: 8px;
 }
 
 .button-small {
@@ -349,10 +417,13 @@ md-option {
 }
 
 .taskHelp {
-	margin: 10px!important;
-	height: 23px;
-    line-height: 9px!important;
-    font-weight: bold;
+	height: 24px;
+    line-height: 0px!important;
+    margin: 24px 25% -12px !important;
+    font-family: inherit !important;
+    padding: 16px 8px !important;
+	background-color: #20A7E1 !important;
+	border-color: #20A7E1 !important;
 }
 
 #profile-bg {
@@ -440,6 +511,14 @@ md-option {
 .item h2 {
 	font-size: 14px !important;
 	line-height: 20px !important;
+}
+
+.item h4 {
+    font-size: 18px !important;
+    line-height: 22px;
+    font-size: inherit !important;
+    color: #00486E;
+    font-weight: bold;
 }
 
 .profileCard {
