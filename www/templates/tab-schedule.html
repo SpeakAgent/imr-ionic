@@ -6,9 +6,9 @@
         <div class="col-xs-2" style="padding: 0!important">
           <a class="button icon-left ion-chevron-left leftArrow"></a>
         </div>
-        <div ng-controller="HomeCtrl" class="col-xs-4" style="padding: 0!important">
-          <h4 class="text-center">{{today | date:'MMMM dd'}}</h4>
-          <h3 class="text-center" style="margin: 0; color: #38ACF5;">Today</h3>
+        <div ng-controller="HomeCtrl" class="col-xs-4 scheduleTitle">
+          <h3 class="text-center">Today</h3>
+          <h6 class="text-center weekInfo">{{today | date:'MMMM dd' | uppercase}}</h6>
           <h6 class="text-center weekInfo">WEEK OF {{today | date:'MMMM dd' | uppercase}}</h6>
         </div>
         <div class="col-xs-2" style="padding: 0!important">

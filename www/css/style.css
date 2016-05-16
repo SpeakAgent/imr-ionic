@@ -162,16 +162,16 @@
 	margin-top: 16px;
 	margin-bottom: 32px;
 	position: relative;
-    left: 73px;
     top: 5px;
+	color: #4A4A4A !important;
 }
 
 .leftArrow {
 	margin-top: 16px;
 	margin-bottom: 32px;
 	position: relative;
-    right: 73px;
     top: 5px;
+	color: #4A4A4A !important;
 }
 
 .arrow2 {
@@ -215,7 +215,17 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	width: 49%;
 	border-radius: 2px;
 	border: solid 1px #20A7E1;
-	margin: -10px 0 0 0;
+	height: 36px !important;
+}
+
+.scheduleTitle {
+	margin-top: 40px;
+	padding: 0 !important;
+	color: #38ACF5;
+}
+
+.scheduleTitle h3 {
+	font-weight: bold;
 }
 
 .tube {
@@ -226,6 +236,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 .nav-pills>li.active>a {
 	background-color: #20A7E1 !important;
 	color: #fff !important;
+	padding: 11px 15px !important;
 }
 
 .item-select select {
@@ -340,19 +351,11 @@ md-select {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	height: 30px;
-	margin: 0!important;
 	border-radius: 2px!important;
 }
 
 .nav-pills>li>a {
 	border-radius: 0!important;
-}
-
-.nav>li>a:focus, .nav>li>a:hover{
-	height: 30px;
-	margin-top: -1px;
-	margin-right: -3px;
 }
 
 a.md-default-theme:not(.md-button), a:not(.md-button) {
@@ -401,9 +404,10 @@ md-option {
 }
 
 .weekInfo {
-	font-size: 11px!important;
-	margin-top: 10px!important;
+	font-size: 12px!important;
+	margin-top: 18px!important;
 	color: #0A4463;
+	line-height: 12px;
 }
 
 .vAccordion--default v-pane-header {
