@@ -32,23 +32,19 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 })
 
 
-.controller('HelpCtrl', function($scope, $cordovaMedia) {
-  var media = null;
-
+.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading) {
   $scope.play = function(src) {
-    if (media == null) {
-      media = $cordovaMedia.newMedia(src, null, null, mediaStatusCallback);
+        var media = new Media(src, null, null, mediaStatusCallback);
+        $cordovaMedia.play(media);
     }
-    media.play();
 
     var mediaStatusCallback = function(status) {
-      if(status == 1) {
-        $ionicLoading.show({template: 'Loading...'});
-      } else {
-        $ionicLoading.hide();
-      }
+        if(status == 1) {
+            $ionicLoading.show({template: 'Loading...'});
+        } else {
+            $ionicLoading.hide();
+        }
     }
-  }
 })
 
 .controller('EmergencyCtrl', function(){
