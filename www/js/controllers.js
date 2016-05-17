@@ -34,18 +34,21 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading) {
 
-    $scope.play = function(src) {
-        var media = new Media(src, null, null, mediaStatusCallback);
-        $cordovaMedia.play(media);
-    }
-
-    var mediaStatusCallback = function(status) {
-        if(status == 1) {
-            $ionicLoading.show({template: 'Loading...'});
-        } else {
-            $ionicLoading.hide();
+    $scope.play = function(url) {
+    // Play the audio file at url
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("playAudio():Audio Error: " + err);
         }
-    }
+    );
+    // Play audio
+    my_media.play();
+  }
 
 })
 

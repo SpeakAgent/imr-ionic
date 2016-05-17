@@ -1,5 +1,5 @@
 <ion-view hide-nav-bar="true" view-title="help">
-  <ion-content class="helpWords">
+  <ion-content class="helpWords" ng-controller="HelpCtrl">
   	<h3 id="helpTitle">Help Words</h3>
     <ul class="list">
         <li class="item item-icon-left helpBorder">
@@ -19,7 +19,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder" ng-click="play('www/helpwords/sick.m4a')">
+        <li role="button" class="item item-icon-left helpBorder" ng-click="play('www/helpwords/sick.m4a')">
           <div class="col-xs-1">
           	<img src="img/Sick.png" class="helpIcon">
           </div>
@@ -30,9 +30,9 @@
           	<img src="img/speak.png" class="valign speaker">
           </div>
           <div class="col-xs-2">
-          	<a class="button button-small button-assertive speakButton valign">
+          	<button class="button button-small button-assertive speakButton valign">
           	  Speak
-          	</a>
+          	</button>
           </div>
         </li>
 
