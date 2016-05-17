@@ -1,8 +1,8 @@
 <ion-view hide-nav-bar="true" view-title="help">
-  <ion-content class="helpWords">
+  <ion-content class="helpWords" ng-controller="HelpCtrl">
   	<h3 id="helpTitle">Help Words</h3>
     <ul class="list">
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/lost.m4a')">
           <div class="col-xs-1">
           	<img src="img/Lost@2x.png" class="helpIcon">
           </div>
@@ -19,7 +19,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li role="button" class="item item-icon-left helpBorder" ng-click="play('helpwords/sick.m4a')">
           <div class="col-xs-1">
           	<img src="img/Sick.png" class="helpIcon">
           </div>
@@ -30,13 +30,13 @@
           	<img src="img/speak.png" class="valign speaker">
           </div>
           <div class="col-xs-2">
-          	<a class="button button-small button-assertive speakButton valign">
+          	<button class="button button-small button-assertive speakButton valign">
           	  Speak
-          	</a>
+          	</button>
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/hurt.m4a')">
           <div class="col-xs-1">
           	<img src="img/Hurt.png" class="helpIcon">
           </div>
@@ -53,7 +53,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/help.m4a')">
           <div class="col-xs-1">
           	<img src="img/Help.png" class="helpIcon">
           </div>
@@ -70,7 +70,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/bathroom.m4a')">
           <div class="col-xs-1">
           	<img src="img/bathroom.png" class="helpIcon">
           </div>
@@ -87,7 +87,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/dothis.m4a')">
           <div class="col-xs-1">
           	<img src="img/how-do-this.png" class="helpIcon">
           </div>
@@ -104,7 +104,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/helpme.m4a')">
           <div class="col-xs-1">
           	<img src="img/Who can help.png" class="helpIcon">
           </div>
@@ -121,7 +121,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/nextstep.m4a')">
           <div class="col-xs-1">
           	<img src="img/next steps.png" class="helpIcon">
           </div>
@@ -138,7 +138,7 @@
           </div>
         </li>
 
-        <li class="item item-icon-left helpBorder">
+        <li class="item item-icon-left helpBorder" ng-click="play('helpwords/finished.m4a')">
           <div class="col-xs-1">
           	<img src="img/when-finished.png" class="helpIcon">
           </div>
