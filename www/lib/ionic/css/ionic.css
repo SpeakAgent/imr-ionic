@@ -5068,7 +5068,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   font-weight: 400;
   font-size: 14px;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
-  opacity: 0.7; }
+  /*opacity: 0.7;*/ }
   .tab-item:hover {
     cursor: pointer; }
   .tab-item.tab-hidden {
