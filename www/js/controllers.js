@@ -47,7 +47,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
         }
     }
 
-});
+})
 
 .controller('EmergencyCtrl', function(){
 
