@@ -228,6 +228,18 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	font-weight: bold;
 }
 
+.text-center-tom {
+	text-align: center;
+	font-size: 23px;
+}
+
+.text-center-wk {
+	text-align: center;
+	font-size: 23px;
+	width: 115%;
+	margin: 0px 0 0px -8px;
+}
+
 .morningBorderBox {
 	background: #F9B71A;
 	height: 100px;
@@ -489,7 +501,7 @@ md-option {
 }
 
 .profile-header {
-	background: #379FD6;
+	background: #20A7E1;
 	width: auto;
 	height: 100px;
 }
@@ -521,7 +533,7 @@ md-option {
 }
 
 #profile-name {
-	color: #0593DF;
+	color: #20A7E1;
 	font-size: 24px;
 	line-height: 32px;
 	font-family: 'Roboto Slab', serif;
@@ -541,7 +553,7 @@ md-option {
 #emergency-image {
 	display: block;
 	border-radius: 100px;
-	border: 4px solid #0593DF;
+	border: 4px solid #20A7E1;
 	width: 80px;
 	height: 80px;
 	margin: 110px auto 0;
@@ -637,7 +649,7 @@ ul {
 }
 
 #helpTitle {
-	color: #0593DF;
+	color: #20A7E1;
 	font-size: 24px;
 	line-height: 24px;
 	font-weight: bold;
@@ -647,7 +659,7 @@ ul {
 }
 
 #HeadingSectionTitle {
-	color: #0593DF;
+	color: #20A7E1;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 24px;
@@ -735,4 +747,11 @@ ul {
     padding-bottom: 10px;
     margin-bottom: 0;
     padding-left: 2px;
+}
+
+.taskQuantity {
+	color: #20A7E1;
+	font-size: 12px;
+    margin-bottom: 12px;
+    margin-left: 5px;
 }

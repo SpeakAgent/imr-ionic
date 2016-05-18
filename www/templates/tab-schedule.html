@@ -4,29 +4,36 @@
       <div class="row" style="margin: 0!important">
         <div class="col-xs-2"></div>
         <div class="col-xs-2" style="padding: 0!important">
-          <a class="button icon-left ion-chevron-left leftArrow"></a>
+          <a ng-click="getTodBack()" class="button icon-left ion-chevron-left leftArrow"></a>
         </div>
         <div ng-controller="HomeCtrl" class="col-xs-4 scheduleTitle">
-          <h3 class="text-center">Today</h3>
-          <h6 class="text-center weekInfo">{{today | date:'MMMM dd' | uppercase}}</h6>
-          <h6 class="text-center weekInfo">WEEK OF {{today | date:'MMMM dd' | uppercase}}</h6>
+          <h3 ng-if="getTod" ng-hide="showWk" class="text-center">Today</h3>
+          <h3 ng-if="getTomo" ng-hide="showWk" class="text-center-tom">Tomorrow</h3>
+
+          <h3 ng-show="showWk" ng-hide="showToday" class="text-center-wk">{{today | date:'EEEE'}}</h3>
+
+          <h6 ng-if="getTod;showToday" ng-hide="getTomo" class="text-center weekInfo">{{today | date:'MMMM dd' | uppercase}}</h6>
+          <h6 ng-if="getTomo;showToday" ng-hide="getTod" class="text-center weekInfo">{{tomorrow | date:'MMMM dd' | uppercase}}</h6>
+
+          <h6 ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF {{today | date:'MMMM dd' | uppercase}}</h6>
         </div>
         <div class="col-xs-2" style="padding: 0!important">
-          <a class="button icon-right ion-chevron-right rightArrow"></a>
+          <a ng-click="getTom()" class="button icon-right ion-chevron-right rightArrow"></a>
         </div>
         <div class="col-xs-2"></div>
       </div>
     </div>
     <div class="container" ng-controller="PanelController as panel">
       <ul class="nav nav-pills" style="margin-top: 40px; line-height: 12px;">
-        <li ng-class="{ active: panel.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(1)" class="dayList">Day</a></li>
-        <li ng-class="{ active: panel.isSelected(2) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(2)">Week</a></li>
+        <li ng-class="{ active: panel.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(1);showDay()" class="dayList">Day</a></li>
+        <li ng-class="{ active: panel.isSelected(2) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(2);showWeek()">Week</a></li>
       </ul>
 
       <!-- START DAY SECTION -->
       <div class="panel dayPanel" ng-show="panel.isSelected(1)" ng-controller="HomeCtrl">
         <div class="dateSchedule">
-          <h6>{{today | date:'EEEE' | uppercase}} {{today | date:'MMMM dd' | uppercase}}</h6>
+          <h6 ng-if="getTod">{{today | date:'EEEE' | uppercase}} {{today | date:'MMMM dd' | uppercase}}</h6>
+          <h6 ng-if="getTomo">{{tomorrow | date:'EEEE' | uppercase}} {{tomorrow | date:'MMMM dd' | uppercase}}</h6>
         </div>
         <v-accordion class="vAccordion--default" multiple>
           <v-pane>
@@ -35,7 +42,7 @@
             </v-pane-header>
 
             <v-pane-content>
-              <a ui-sref="task-view" class="button icon-right arrow2 taskCard">
+              <a ng-hide="getTomo" ui-sref="task-view" class="button icon-right arrow2 taskCard">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
@@ -96,7 +103,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">{{today | date:'EEEE' | uppercase}} {{today | date:'MMMM dd' | uppercase}}</h5>
+              <h5 class="weekDay">SUNDAY <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -137,7 +144,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">TUESDAY APRIL 3</h5>
+              <h5 class="weekDay">TUESDAY APRIL 3 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -178,7 +185,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">WEDNESDAY APRIL 4</h5>
+              <h5 class="weekDay">WEDNESDAY APRIL 4 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -219,7 +226,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">THURSDAY APRIL 5</h5>
+              <h5 class="weekDay">THURSDAY APRIL 5 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -260,7 +267,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">FRIDAY APRIL 6</h5>
+              <h5 class="weekDay">FRIDAY APRIL 6 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -301,7 +308,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">SATURDAY APRIL 7</h5>
+              <h5 class="weekDay">SATURDAY APRIL 7 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
@@ -342,7 +349,7 @@
 
           <v-pane>
             <v-pane-header>
-              <h5 class="weekDay">SUNDAY APRIL 8</h5>
+              <h5 class="weekDay">SUNDAY APRIL 8 <span class="taskQuantity">(3)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
