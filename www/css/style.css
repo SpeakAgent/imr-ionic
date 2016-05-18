@@ -250,6 +250,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	background-color: #fff !important;
 	border-radius: 0;
 	margin-left: 5%;
+	margin-bottom: 15px;
 	padding: 20px 20px 20px 0;
 	width: 90%;
 	-webkit-box-shadow: 1px 1px 5px 2px rgba(179,179,179,1);
@@ -438,13 +439,15 @@ md-option {
 	font-size: 16px;
 	line-height: 20px;
 	font-family: 'Roboto Slab', serif;
+	width: 130%;
 }
 
 .task i {
-    color: #20A7E1;
-    font-size: 25px;
-    position: absolute;
-    left: 100%;
+	color: #20A7E1;
+	font-size: 25px;
+	position: relative;
+	top: 3px;
+	left: 5px
 }
 
 .weekInfo {
@@ -723,4 +726,13 @@ ul {
 
 .weekPanel h5 {
 	margin-left: 15px;
+}
+
+.weekDay {
+	margin-left: 15px;
+    border-bottom: 1px solid #BEBEBE;
+    width: 94%;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    padding-left: 2px;
 }
