@@ -21,20 +21,12 @@
       <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
     </div>
 
-    <a ui-sref="task-view">
+    <a ui-sref="morning-task-view" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4" ng-show="time === 'morning'" ng-hide="time != 'morning'">
               <img src="img/icon.png" class="icon" alt="">
-            </div>
-
-            <div class="col-md-4" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
-              <img src="img/mywork.png" class="icon" alt="">
-            </div>
-
-            <div class="col-md-4" ng-show="time === 'night'" ng-hide="time != 'night'">
-              <img src="img/lifeicon.png" class="icon" alt="">
             </div>
 
             <div class="col-md-7 homeTask" ng-show="time === 'morning'" ng-hide="time != 'morning'">
@@ -43,17 +35,6 @@
               <h4 class="text-center topic">Math Tutoring</h4>
             </div>
 
-            <div class="col-md-7 homeTask" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
-              <h4 class="text-center up">UP NEXT:</h4>
-              <p class="text-center hour">2:00pm-4:00pm</p>
-              <h4 class="text-center topic">Can Crushing</h4>
-            </div>
-
-            <div class="col-md-7 homeTask" ng-show="time === 'night'" ng-hide="time != 'night'">
-              <h4 class="text-center up">UP NEXT:</h4>
-              <p class="text-center hour">7:00pm-9:00pm</p>
-              <h4 class="text-center topic">Dinner at Sam's House</h4>
-            </div>
             <div class="col-md-1">
               <span class="button icon-right ion-chevron-right arrow"></span>
             </div>
@@ -61,5 +42,50 @@
         </div>
       </div>
     </a>
+
+    <a ui-sref="afternoon-task-view" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+      <div ng-class="timeBox" class="box">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+              <img src="img/mywork.png" class="icon" alt="">
+            </div>
+
+            <div class="col-md-7 homeTask" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+              <h4 class="text-center up">UP NEXT:</h4>
+              <p class="text-center hour">2:00pm-4:00pm</p>
+              <h4 class="text-center topic">Can Crushing</h4>
+            </div>
+
+            <div class="col-md-1">
+              <span class="button icon-right ion-chevron-right arrow"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a ui-sref="night-task-view" ng-show="time === 'night'" ng-hide="time != 'night'">
+      <div ng-class="timeBox" class="box">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4" ng-show="time === 'night'" ng-hide="time != 'night'">
+              <img src="img/lifeicon.png" class="icon" alt="">
+            </div>
+
+            <div class="col-md-7 homeNightTask" ng-show="time === 'night'" ng-hide="time != 'night'">
+              <h4 class="text-center up">UP NEXT:</h4>
+              <p class="text-center hour">7:00pm-9:00pm</p>
+              <h4 class="text-center topic">Dinner at Sam's house</h4>
+            </div>
+
+            <div class="col-md-1">
+              <span class="button icon-right ion-chevron-right arrow"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
   </ion-content>
 </ion-view>

@@ -42,15 +42,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('task-view', {
-    url: '/task-view',
-    templateUrl: 'templates/task-view.html',
+  .state('morning-task-view', {
+    url: '/morning/task-view',
+    templateUrl: 'templates/morning/task-view.html',
     controller: 'TaskViewController'
   })
 
-  .state('next-step', {
-    url: '/next-step',
-    templateUrl: 'templates/next-step.html',
+  .state('morning-next-step', {
+    url: '/morning/next-step',
+    templateUrl: 'templates/morning/next-step.html',
+    controller: ''
+  })
+
+  .state('afternoon-task-view', {
+    url: '/afternoon/task-view',
+    templateUrl: 'templates/afternoon/task-view.html',
+    controller: 'TaskViewController'
+  })
+
+  .state('afternoon-next-step', {
+    url: '/afternoon/next-step',
+    templateUrl: 'templates/afternoon/next-step.html',
+    controller: ''
+  })
+
+  .state('night-task-view', {
+    url: '/night/task-view',
+    templateUrl: 'templates/night/task-view.html',
+    controller: 'TaskViewController'
+  })
+
+  .state('night-next-step', {
+    url: '/night/next-step',
+    templateUrl: 'templates/night/next-step.html',
     controller: ''
   })
 
