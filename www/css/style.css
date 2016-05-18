@@ -162,16 +162,16 @@
 	margin-top: 16px;
 	margin-bottom: 32px;
 	position: relative;
-    left: 73px;
     top: 5px;
+	color: #4A4A4A !important;
 }
 
 .leftArrow {
 	margin-top: 16px;
 	margin-bottom: 32px;
 	position: relative;
-    right: 73px;
     top: 5px;
+	color: #4A4A4A !important;
 }
 
 .arrow2 {
@@ -215,7 +215,59 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 	width: 49%;
 	border-radius: 2px;
 	border: solid 1px #20A7E1;
-	margin: -10px 0 0 0;
+	height: 36px !important;
+}
+
+.scheduleTitle {
+	margin-top: 40px;
+	padding: 0 !important;
+	color: #38ACF5;
+}
+
+.scheduleTitle h3 {
+	font-weight: bold;
+}
+
+.text-center-tom {
+	text-align: center;
+	font-size: 23px;
+}
+
+.text-center-wk {
+	text-align: center;
+	font-size: 23px;
+	width: 115%;
+	margin: 0px 0 0px -8px;
+}
+
+.morningBorderBox {
+	background: #F9B71A;
+	height: 100px;
+	margin: -21px 0 -21px -1px;
+}
+
+.afternoonBorderBox {
+	background: #408940;
+	height: 100px;
+	margin: -21px 0 -21px -1px;
+}
+
+.eveningBorderBox {
+	background: #462C83;
+	height: 100px;
+	margin: -21px 0 -21px -1px;
+}
+
+.taskCard {
+	background-color: #fff !important;
+	border-radius: 0;
+	margin-left: 5%;
+	margin-bottom: 15px;
+	padding: 20px 20px 20px 0;
+	width: 90%;
+	-webkit-box-shadow: 1px 1px 5px 2px rgba(179,179,179,1);
+	-moz-box-shadow: 1px 1px 5px 2px rgba(179,179,179,1);
+	box-shadow: 1px 1px 5px 2px rgba(179,179,179,1);
 }
 
 .tube {
@@ -226,6 +278,7 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 .nav-pills>li.active>a {
 	background-color: #20A7E1 !important;
 	color: #fff !important;
+	padding: 11px 15px !important;
 }
 
 .item-select select {
@@ -340,19 +393,11 @@ md-select {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	height: 30px;
-	margin: 0!important;
 	border-radius: 2px!important;
 }
 
 .nav-pills>li>a {
 	border-radius: 0!important;
-}
-
-.nav>li>a:focus, .nav>li>a:hover{
-	height: 30px;
-	margin-top: -1px;
-	margin-right: -3px;
 }
 
 a.md-default-theme:not(.md-button), a:not(.md-button) {
@@ -365,7 +410,7 @@ a.md-default-theme:not(.md-button), a:not(.md-button):hover {
 
 .dateSchedule{
 	margin: 18px 0 0 0!important;
-	background: #DDDDDD!important;
+	background: #EBEBED!important;
 	padding: 2px;
 }
 
@@ -390,24 +435,42 @@ md-option {
 }
 
 .time {
-	margin-top: 5px!important;
-	color: #0A4463;
+	margin-top: 10px!important;
+	color: #00355D;
+	text-align: left;
+	font-size: 12px;
+	font-family: "-apple-system", "Roboto", "Segoe UI", sans-serif !important;
 }
 
 .task {
 	margin: 0!important;
 	padding-left: 5px!important;
-	color: #0E0C42;
+	color: #00355D;
+	text-align: left;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 20px;
+	font-family: 'Roboto Slab', serif;
+	width: 130%;
+}
+
+.task i {
+	color: #20A7E1;
+	font-size: 25px;
+	position: relative;
+	top: 3px;
+	left: 5px
 }
 
 .weekInfo {
-	font-size: 11px!important;
-	margin-top: 10px!important;
-	color: #0A4463;
+	font-size: 12px!important;
+	margin-top: 18px!important;
+	color: #00355D;
+	line-height: 12px;
 }
 
 .vAccordion--default v-pane-header {
-	background: #DDDDDD;
+	background: #EBEBED;
 }
 
 .taskTittle {
@@ -438,7 +501,7 @@ md-option {
 }
 
 .profile-header {
-	background: #379FD6;
+	background: #20A7E1;
 	width: auto;
 	height: 100px;
 }
@@ -470,7 +533,7 @@ md-option {
 }
 
 #profile-name {
-	color: #0593DF;
+	color: #20A7E1;
 	font-size: 24px;
 	line-height: 32px;
 	font-family: 'Roboto Slab', serif;
@@ -490,7 +553,7 @@ md-option {
 #emergency-image {
 	display: block;
 	border-radius: 100px;
-	border: 4px solid #0593DF;
+	border: 4px solid #20A7E1;
 	width: 80px;
 	height: 80px;
 	margin: 110px auto 0;
@@ -586,7 +649,7 @@ ul {
 }
 
 #helpTitle {
-	color: #0593DF;
+	color: #20A7E1;
 	font-size: 24px;
 	line-height: 24px;
 	font-weight: bold;
@@ -596,7 +659,7 @@ ul {
 }
 
 #HeadingSectionTitle {
-	color: #0593DF;
+	color: #20A7E1;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 24px;
@@ -663,16 +726,32 @@ ul {
 }
 
 .dayPanel {
-    background-color: #DDDDDD !important;
+    background-color: #EBEBED !important;
     margin: 0 -15px 0 -15px;
     padding-bottom: 76%;
 }
 
 .weekPanel {
-    background-color: #DDDDDD !important;
+    background-color: #EBEBED !important;
     margin: 0 -15px 0 -15px;
 }
 
 .weekPanel h5 {
 	margin-left: 15px;
+}
+
+.weekDay {
+	margin-left: 15px;
+    border-bottom: 1px solid #BEBEBE;
+    width: 94%;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    padding-left: 2px;
+}
+
+.taskQuantity {
+	color: #20A7E1;
+	font-size: 12px;
+    margin-bottom: 12px;
+    margin-left: 5px;
 }

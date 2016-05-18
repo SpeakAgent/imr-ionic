@@ -2,6 +2,8 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('HomeCtrl', function($scope) {
   $scope.today = new Date();
+  $scope.tomorrow = new Date();
+  $scope.tomorrow.setDate($scope.tomorrow.getDate() + 1);
 })
 
 .controller('TimeCtrl', function($scope){
@@ -25,6 +27,30 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 })
 
 .controller('ScheduleCtrl', function($scope) {
+  $scope.getTod = true;
+  $scope.getTomo = false;
+  $scope.showWk = false;
+  $scope.showToday = true;
+
+  $scope.getTom = function () {
+    $scope.getTod = false;
+    $scope.getTomo = true;
+  }
+
+  $scope.getTodBack = function () {
+    $scope.getTod = true;
+    $scope.getTomo = false;
+  }
+
+  $scope.showWeek = function () {
+    $scope.showWk = true;
+    $scope.showToday = false;
+  }
+
+  $scope.showDay = function () {
+    $scope.showWk = false;
+    $scope.showToday = true;
+  }
 
 })
 
@@ -72,6 +98,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('TaskViewController', function($scope, $ionicPopover, $ionicHistory){
   this.tab = 1;
+
   this.selectTab = function(setTab) {
     this.tab = setTab;
   };
