@@ -54,6 +54,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     controller: ''
   })
 
+  .state('transit-task-view', {
+    url: '/transit/task-view',
+    templateUrl: 'templates/transit/task-view.html',
+    controller: 'TaskViewController'
+  })
+
+  .state('transit-next-step', {
+    url: '/transit/next-step',
+    templateUrl: 'templates/transit/next-step.html',
+    controller: ''
+  })
+
   .state('afternoon-task-view', {
     url: '/afternoon/task-view',
     templateUrl: 'templates/afternoon/task-view.html',

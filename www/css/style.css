@@ -111,6 +111,11 @@
 	height: 36px;
 }
 
+.transitHeader {
+	background-color: #FF7700;
+	height: 36px;
+}
+
 .afternoonHeader {
 	background-color: #408940;
 	height: 36px;
@@ -242,6 +247,12 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 
 .morningBorderBox {
 	background: #F9B71A;
+	height: 100px;
+	margin: -21px 0 -21px -1px;
+}
+
+.transitBorderBox {
+	background: #FF7700;
 	height: 100px;
 	margin: -21px 0 -21px -1px;
 }

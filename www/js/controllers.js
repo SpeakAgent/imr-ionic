@@ -32,6 +32,9 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   $scope.showWk = false;
   $scope.showToday = true;
 
+  $scope.currentWeek = true;
+  $scope.nextWeek = false;
+
   $scope.getTom = function () {
     $scope.getTod = false;
     $scope.getTomo = true;
@@ -50,6 +53,16 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   $scope.showDay = function () {
     $scope.showWk = false;
     $scope.showToday = true;
+  }
+
+  $scope.getNext = function () {
+    $scope.currentWeek = false;
+    $scope.nextWeek = true;
+  }
+
+  $scope.getNextBack = function () {
+    $scope.currentWeek = true;
+    $scope.nextWeek = false;
   }
 
 })
@@ -120,5 +133,6 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   $scope.doneTask = function() {
     $scope.done = true;
   };
+
 
 });

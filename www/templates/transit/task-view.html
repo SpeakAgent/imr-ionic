@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
-    <div class="bar bar-header afternoonHeader">
+    <div class="bar bar-header transitHeader">
       <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
     </div>
     <br>
@@ -8,7 +8,7 @@
 
     <a class="item item-thumbnail-left headerTask" href="#">
       <img src="img/mt.png">
-      <h2 class="taskTittle">Can Crushing</h2>
+      <h2 class="taskTittle">Get a ride from Bobby</h2>
       <div class="col-xs-1">
         <img src="img/youtube.png" class="valign tube">
       </div>
@@ -20,7 +20,7 @@
     </ul>
 
 
-    <!-- START DAY SECTION -->
+    <!-- START SINGLE STEP SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(1)">
       <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
       <div class="card">
@@ -30,10 +30,10 @@
             <img src="img/mt.png">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="col-xs-1">
-            	<img src="img/speak.png" class="valign speaker">
+              <img src="img/speak.png" class="valign speaker">
               <a class="button button-small button-assertive speakButton valign speakView">
-            	  Speak
-            	</a>
+                Speak
+              </a>
             </div>
           </div>
           <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
@@ -45,13 +45,13 @@
       </div>
       <div class="text-right">
         <div class="padding">
-          <a ui-sref="afternoon-next-step" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Forward</span></a>
+          <a ui-sref="transit-next-step" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Forward</span></a>
         </div>
       </div>
     </div>
-    <!-- END DAY SECTION -->
+    <!-- END SINGLE STEP SECTION -->
 
-    <!-- START WEEK SECTION -->
+    <!-- START ALL STEP SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(2)">
       <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
       <div class="card">
@@ -96,6 +96,6 @@
         </div>
       </div>
     </div>
-  <!-- END WEEK SECTION -->
+    <!-- END ALL STEP SECTION -->
   </ion-content>
 </ion-view>
