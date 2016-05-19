@@ -141,17 +141,23 @@
 	margin-top: 15px;
 }
 
+.icon-left {
+	float: left;
+}
+
 .up {
 	margin-left: -12px;
-		color: #20A7E1;
+	color: #20A7E1;
 }
 
 .hour {
 	color: #00486E;
+	margin-left: -12px;
 }
 
 .topic {
 	color: #00486E;
+	margin-left: -12px;
 	font-weight: bold;
 }
 .arrow {
@@ -765,4 +771,10 @@ ul {
 	font-size: 12px;
     margin-bottom: 12px;
     margin-left: 5px;
+}
+
+.success {
+	background-image: url('../img/doneMarker.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: 100.5% -1% !important;
 }

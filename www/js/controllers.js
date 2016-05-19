@@ -76,30 +76,37 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading) {
   $scope.play = function(src) {
-        var media = new Media(src, null, null, mediaStatusCallback);
-        $cordovaMedia.play(media);
-    }
+    var media = new Media(src, null, null, mediaStatusCallback);
+    $cordovaMedia.play(media);
+  }
 
-    var mediaStatusCallback = function(status) {
-        if(status == 1) {
-            $ionicLoading.show({template: 'Loading...'});
-        } else {
-            $ionicLoading.hide();
-        }
+  var mediaStatusCallback = function(status) {
+    if(status == 1) {
+      $ionicLoading.show({template: 'Loading...'});
+    } else {
+      $ionicLoading.hide();
     }
+  }
 })
 
 .controller('EmergencyCtrl', function(){
 
 })
 
-.controller('PanelController', function($scope, $ionicPopover){
+.controller('PanelController', function ($scope, $ionicPopover, taskService) {
   this.tab = 1;
   this.selectTab = function(setTab) {
     this.tab = setTab;
   };
   this.isSelected = function(checkTab) {
-    return this.tab === checkTab;
+      if (this.tab === checkTab) {
+          var taskMessage = taskService.getMessages();
+          if (taskMessage != null & taskMessage.length > 0) {
+              $scope.isSuccessPushMess = taskMessage[0].status == 'done';
+          }
+          return true;
+      }
+      return false;
   }
 
   $scope.$on('my-accordion:onReady', function () {
@@ -109,15 +116,14 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 })
 
 
-.controller('TaskViewController', function($scope, $ionicPopover, $ionicHistory){
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService) {
   this.tab = 1;
-
   this.selectTab = function(setTab) {
     this.tab = setTab;
   };
 
-  this.isSelected = function(checkTab) {
-    return this.tab === checkTab;
+  this.isSelected = function (checkTab) {
+      return this.tab === checkTab;
   }
 
   $scope.$on('my-accordion:onReady', function () {
@@ -129,10 +135,15 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $ionicHistory.goBack();
   };
 
-  $scope.done = false;
-  $scope.doneTask = function() {
-    $scope.done = true;
+  //Fixed for All Steps
+  $scope.done1 = false;
+  $scope.doneTask1 = function () {
+      $scope.done1 = true;
   };
 
-
+  $scope.done2 = false;
+  $scope.doneTask2 = function () {
+      $scope.done2 = true;
+      taskService.addMessage({ 'status': 'done' })
+  };
 });
