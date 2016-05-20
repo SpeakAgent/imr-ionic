@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
+<ion-view view-title="task-view" hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
     <div class="bar bar-header nightHeader">
       <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
@@ -36,16 +36,16 @@
               </a>
             </div>
           </div>
-          <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask()" ng-hide="done" class="button button-small button-assertive doneButton">
+          <i ng-hide="done1" class="ion-checkmark-round checkmark"></i>
+          <i ng-show="done1" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneTask1()" ng-hide="done1" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>
       </div>
       <div class="text-right">
         <div class="padding">
-          <a ui-sref="night-next-step" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Forward</span></a>
+          <a href="#/tab/night-next-step" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Next</span></a>
         </div>
       </div>
     </div>
@@ -67,9 +67,9 @@
               </a>
             </div>
           </div>
-          <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask()" ng-hide="done" class="button button-small button-assertive doneButton">
+          <i ng-hide="done1" class="ion-checkmark-round checkmark"></i>
+          <i ng-show="done1" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneTask1()" ng-hide="done1" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>
@@ -88,9 +88,9 @@
               </a>
             </div>
           </div>
-          <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask()" ng-hide="done" class="button button-small button-assertive doneButton">
+          <i ng-hide="done2" class="ion-checkmark-round checkmark"></i>
+          <i ng-show="done2" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneTask2()" ng-hide="done2" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>

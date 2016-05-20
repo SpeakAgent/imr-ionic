@@ -1,14 +1,14 @@
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
-  <div class="bar bar-header morningHeader">
-    <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+  <div class="bar bar-header transitHeader">
+    <a href="#/tab/home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
   </div>
   <br>
   <br>
 
   <a class="item item-thumbnail-left headerTask" href="#">
     <img src="img/mt.png">
-    <h2 class="taskTittle">Math Tutoring</h2>
+    <h2 class="taskTittle">Get a ride from Bobby</h2>
     <div class="col-xs-1">
       <img src="img/youtube.png" class="valign tube">
     </div>
@@ -45,13 +45,13 @@
     </div>
     <div class="text-right">
       <div class="padding">
-        <a href="#/tab/morning-task-view" class="button icon-left ion-chevron-left arrow3"><span class="nextStep">Back</span></a>
+        <a href="#/tab/transit-task-view" class="button icon-left ion-chevron-left arrow3"><span class="nextStep">Back</span></a>
       </div>
     </div>
   </div>
   <!-- END SINGLE STEP SECTION -->
 
-  <!-- START ALL STEPS SECTION -->
+  <!-- START ALL STEP SECTION -->
   <div class="taskView" ng-show="taskView.isSelected(2)">
     <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
     <div class="card">
@@ -96,6 +96,6 @@
       </div>
     </div>
   </div>
-  <!-- END ALL STEPS SECTION -->
+  <!-- END ALL STEP SECTION -->
 </ion-content>
 </ion-view>

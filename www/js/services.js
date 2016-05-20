@@ -18,4 +18,22 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+
+.service('taskService', function () {
+    var messageList = [];
+
+    var addMessage = function (newObj) {
+        messageList.push(newObj);
+    };
+
+    var getMessages = function () {
+        return messageList;
+    };
+
+    return {
+        addMessage: addMessage,
+        getMessages: getMessages
+    };
+
 });
