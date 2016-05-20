@@ -1,93 +1,42 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'vAccordion', 'angularMoment', 'ngCordova'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
-    }
-    if (window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  .state('tab.home', {
-    url: '/home',
+  .state('tab.afternoon-task-view', {
+    url: '/afternoon-task-view',
     views: {
       'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-        controller: 'HomeCtrl'
+        templateUrl: 'templates/afternoon/task-view.html',
+        controller: 'TaskViewController'
       }
     }
   })
 
-  .state('tab.schedule', {
-    url: '/schedule',
+  .state('tab.afternoon-next-step', {
+    url: '/afternoon-next-step',
     views: {
-      'tab-schedule': {
-        templateUrl: 'templates/tab-schedule.html',
-        controller: 'ScheduleCtrl'
+      'tab-home': {
+        templateUrl: 'templates/afternoon/next-step.html',
+        controller: 'TaskViewController'
       }
     }
   })
 
-  .state('morning-task-view', {
-    url: '/morning/task-view',
-    templateUrl: 'templates/morning/task-view.html',
-    controller: 'TaskViewController'
+  .state('tab.night-task-view', {
+    url: '/night-task-view',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/night/task-view.html',
+        controller: 'TaskViewController'
+      }
+    }
   })
 
-  .state('morning-next-step', {
-    url: '/morning/next-step',
-    templateUrl: 'templates/morning/next-step.html',
-    controller: ''
-  })
-
-  .state('transit-task-view', {
-    url: '/transit/task-view',
-    templateUrl: 'templates/transit/task-view.html',
-    controller: 'TaskViewController'
-  })
-
-  .state('transit-next-step', {
-    url: '/transit/next-step',
-    templateUrl: 'templates/transit/next-step.html',
-    controller: ''
-  })
-
-  .state('afternoon-task-view', {
-    url: '/afternoon/task-view',
-    templateUrl: 'templates/afternoon/task-view.html',
-    controller: 'TaskViewController'
-  })
-
-  .state('afternoon-next-step', {
-    url: '/afternoon/next-step',
-    templateUrl: 'templates/afternoon/next-step.html',
-    controller: ''
-  })
-
-  .state('night-task-view', {
-    url: '/night/task-view',
-    templateUrl: 'templates/night/task-view.html',
-    controller: 'TaskViewController'
-  })
-
-  .state('night-next-step', {
-    url: '/night/next-step',
-    templateUrl: 'templates/night/next-step.html',
-    controller: ''
+  .state('tab.night-next-step', {
+    url: '/night-next-step',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/night/next-step.html',
+        controller: 'TaskViewController'
+      }
+    }
   })
 
   .state('tab.profile', {
