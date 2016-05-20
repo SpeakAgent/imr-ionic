@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true" class="Home">
+>
   <ion-content class="wrapper" ng-class="time">
     <div class="welcome" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <h2 class="text-center HomeTitle">Good Morning! <br> Today is</h2>
@@ -21,7 +21,7 @@
       <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
     </div>
 
-    <a ui-sref="morning-task-view" ng-show="time === 'morning'" ng-hide="time != 'morning'">
+    <a href="#/tab/morning-task-view" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -43,7 +43,7 @@
       </div>
     </a>
 
-    <a ui-sref="afternoon-task-view" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+    <a href="#/tab/afternoon-task-view" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -65,7 +65,7 @@
       </div>
     </a>
 
-    <a ui-sref="night-task-view" ng-show="time === 'night'" ng-hide="time != 'night'">
+    <a href="#/tab/night-task-view" ng-show="time === 'night'" ng-hide="time != 'night'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
