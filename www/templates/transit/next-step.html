@@ -1,7 +1,12 @@
+imr-ionic/www/templates/transit/next-step.html
+8675106  3 hours ago
+@fernandojosesu fernandojosesu Damn routes
+1 contributor
+RawBlameHistory    102 lines (95 sloc)  4 KB
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
   <div class="bar bar-header transitHeader">
-    <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+    <a href="#/tab/home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
   </div>
   <br>
   <br>
@@ -45,7 +50,7 @@
     </div>
     <div class="text-right">
       <div class="padding">
-        <a ui-sref="transit-task-view" class="button icon-left ion-chevron-left arrow3"><span class="nextStep">Back</span></a>
+        <a href="#/tab/transit-task-view" class="button icon-left ion-chevron-left arrow3"><span class="nextStep">Back</span></a>
       </div>
     </div>
   </div>
