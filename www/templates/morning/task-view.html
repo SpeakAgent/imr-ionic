@@ -1,18 +1,18 @@
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
     <div class="bar bar-header morningHeader">
-      <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+      <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
     </div>
     <br>
     <br>
 
-    <a class="item item-thumbnail-left headerTask" href="#">
+    <div class="item item-thumbnail-left headerTask">
       <img src="img/mt.png">
-      <h2 class="taskTittle">Math Tutoring</h2>
+      <h2 class="taskTittle">Can Crushing</h2>
       <div class="col-xs-1">
-        <img src="img/youtube.png" class="valign tube">
+        <a href="https://www.youtube.com/watch?v=q3B2seGgg8o&list=PLroQg5dqMAEWfH-LkGOVtXL59uIH0P_OT"><img src="img/youtube.png" class="valign tube"></a>
       </div>
-    </a>
+    </div>
 
     <ul class="nav nav-pills stepsButtons">
       <li ng-class="{ active: taskView.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="taskView.selectTab(1)" class="dayList">Single Step</a></li>
@@ -22,7 +22,7 @@
 
     <!-- START DAY SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(1)">
-      <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
+      <button class="btn btn-primary btn-small taskHelp" ng-click="openModal()">Get help with this task</button>
       <div class="card">
         <div class="item item-text-wrap task-item">
           <h4>Step 1</h4>
