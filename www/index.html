@@ -33,12 +33,22 @@
     <!-- Angular Material Library -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 
+    <!-- Angular UI Library -->
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="https://rawgit.com/dbtek/angular-aside/master/dist/js/angular-aside.js"></script>
+
+    <link rel="stylesheet" href="https://rawgit.com/dbtek/angular-aside/master/dist/css/angular-aside.css"/>
+
+    <!-- Other UI Library -->
+    <link rel="stylesheet" href="lib/v-accordion/dist/v-accordion.css">
+
     <script src="lib/v-accordion/dist/v-accordion.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/moment/moment.js"></script>
     <script src="lib/angular-moment/angular-moment.js"></script>
     <script src="lib/date.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+    <script src="lib/ui-router-styles.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -47,9 +57,10 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/login.js"></script>
   </head>
 
-  <body ng-app="starter" ng-class="time" ng-controller="TimeCtrl">
+  <body ng-app="starter" ng-class="time" ng-controller="TimeCtrl" ui-router-styles>
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

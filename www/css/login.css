@@ -1,0 +1,136 @@
+.splash-view {
+    background: url(../img/login/bg.png);
+    background-size: cover;
+}
+
+.list-inset {
+    background-color: transparent;
+}
+
+.list-inset h1 {
+    color: #fff;
+    font-size: 36px;
+	font-family: 'Roboto Slab', serif;
+    padding: 50px 0 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.list-inset h3 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 32px;
+	font-family: 'Roboto Slab', serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.splash-button {
+    background: #00355D !important;
+    font-size: 16px;
+    font-family: "-apple-system", "Roboto", "Segoe UI", sans-serif;
+    border-radius: 20px;
+    width: 70% !important;
+    margin: 40% auto 0 !important;
+    font-weight: bold;
+}
+
+.fade.in {
+    background: transparent;
+    z-index: 3 !important;
+}
+
+.ng-aside.vertical .modal-dialog .modal-content {
+    height: 420px;
+}
+
+.ng-aside.vertical .modal-dialog .modal-content {
+    max-height: 420px;
+}
+
+.list-inset label {
+    color: #00355D;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "-apple-system", "Roboto", "Segoe UI", sans-serif;
+}
+
+.list-inset input[type=text], .list-inset input[type=password] {
+    background: #EBEBED;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.list-inset a{
+    color: #5B5D5E;
+    font-size: 14px;
+    line-height: 16px;
+    font-style: italic;
+    font-family: "-apple-system", "Roboto", "Segoe UI", sans-serif;
+}
+
+.remember label {
+    margin: -1% 0;
+}
+
+.login-button {
+    background: #00355D !important;
+    font-size: 16px;
+    font-family: "-apple-system", "Roboto", "Segoe UI", sans-serif;
+    border-radius: 20px;
+    width: 70% !important;
+    margin: auto;
+    font-weight: bold;
+}
+
+label.userError, label.passError  {
+    color: #FB3713;
+}
+
+input[type=text].userError, input[type=password].passError  {
+    border: 1px solid #FB3713;
+}
+
+.custom-modal {
+    border-radius: 0px;
+}
+
+.bar-header {
+    border-top: 12px solid #20A7E1;
+    background-image: none;
+}
+
+.icon-circle {
+    background: #00355D;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 72px;
+    text-align: center;
+    margin-left: 33%;
+    width: 33%;
+}
+
+.icon-circle i {
+    position: relative;
+    top: -3px;
+}
+
+.forgot-content h3 {
+    color: #00355D;
+    font-size: 24px;
+    line-height: 40px;
+	font-family: 'Roboto Slab', serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.forgot-content p {
+    color: #00355D;
+    font-size: 16px;
+    line-height: 16px;
+	font-family: 'Roboto Slab', serif;
+    text-align: center;
+}

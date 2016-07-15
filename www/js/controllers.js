@@ -1,4 +1,4 @@
-var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
+var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 'ui.bootstrap', 'ngAside'])
 
 .controller('HomeCtrl', function($scope, $http, $interval, $filter) {
   $scope.today = new Date();
@@ -8,22 +8,22 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   $scope.timeAfternoon = false;
   $scope.timeNight = false;
 
-  $scope.hora = $scope.today.getHours();
+  $scope.hour = $scope.today.getHours();
 
   var init = init;
-  var monitorHoras = monitorHoras;
+  var monitorhours = monitorhours;
   var resetTimes = resetTimes;
 
   init();
-  monitorHoras();
+  monitorhours();
 
   function init(){
-    if ($scope.hora >= 6 && $scope.hora < 12) {
+    if ($scope.hour >= 6 && $scope.hour < 12) {
       $scope.timeMorning = true;
       $scope.time="morning";
       console.log('set morning');
     }
-    else if ($scope.hora >= 12 && $scope.hora <= 18) {
+    else if ($scope.hour >= 12 && $scope.hour <= 18) {
       $scope.timeAfternoon = true;
       $scope.time="afternoon";
       console.log('set afternoon');
@@ -34,11 +34,11 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     }
   }
 
-  function monitorHoras(){
+  function monitorhours(){
     $interval(function (){
       var newHour = new Date().getHours();
-      if(newHour != $scope.hora){
-        $scope.hora = newHour;
+      if(newHour != $scope.hour){
+        $scope.hour = newHour;
         resetTimes();
         init();
       }
@@ -320,16 +320,16 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   });
 
   $scope.openModal = function() {
-      $scope.modalGetHelpWithTask.show();
+    $scope.modalGetHelpWithTask.show();
   };
 
   $scope.closeModal = function() {
-      $scope.modalGetHelpWithTask.hide();
+    $scope.modalGetHelpWithTask.hide();
   };
 
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
-      $scope.modalGetHelpWithTask.remove();
+    $scope.modalGetHelpWithTask.remove();
   });
 
 
