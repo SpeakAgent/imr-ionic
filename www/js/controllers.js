@@ -201,10 +201,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 })
 
-<<<<<<< HEAD
-.controller('EmergencyCtrl', function(){
-=======
-
 .controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http) {
 
   var req = {
@@ -241,7 +237,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     },
     method: 'POST'
   }
->>>>>>> 1f77a6a1a4666ecd55507455f690a1723d1bcd0e
 
   $http(req).success(function(data){
     $scope.user = data
@@ -270,12 +265,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   });
 })
 
-
-<<<<<<< HEAD
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $ionicModal) {
-=======
 .controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
->>>>>>> 1f77a6a1a4666ecd55507455f690a1723d1bcd0e
+
   this.tab = 1;
   $scope.done1 = false;
   $scope.done2 = false;
