@@ -1,6 +1,56 @@
 var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
-.controller('HomeCtrl', function($scope, $http) {
+.controller('HomeCtrl', function($scope, $http, $interval) {
+  $scope.today = new Date();
+
+  $scope.time = '';
+  $scope.timeMorning = false;
+  $scope.timeAfternoon = false;
+  $scope.timeNight = false;
+
+  $scope.hora = $scope.today.getHours();
+
+  var init = init;
+  var monitorHoras = monitorHoras;
+  var resetTimes = resetTimes;
+
+  init();
+  monitorHoras();
+
+  function init(){
+    if ($scope.hora >= 6 && $scope.hora < 12) {
+      $scope.timeMorning = true;
+      $scope.time="morning";
+      console.log('set morning');
+    }
+    else if ($scope.hora >= 12 && $scope.hora <= 18) {
+      $scope.timeAfternoon = true;
+      $scope.time="afternoon";
+      console.log('set afternoon');
+    } else {
+      $scope.timeNight = true;
+      $scope.time="night";
+      console.log('set night');
+    }
+  }
+
+  function monitorHoras(){
+    $interval(function (){
+      var newHour = new Date().getHours();
+      if(newHour != $scope.hora){
+        $scope.hora = newHour;
+        resetTimes();
+        init();
+      }
+    }, 5000);
+  }
+
+  function resetTimes(){
+    $scope.timeMorning = false;
+    $scope.timeAfternoon = false;
+    $scope.timeNight = false;
+  }
+
   $scope.monthNames = {
     '1': 'January',
     '2': 'February',
@@ -76,48 +126,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
       $scope.events = data;
     })
   }
-
-  var init = init;
-  var monitorHoras = monitorHoras;
-  var resetTimes = resetTimes;
-
-  init();
-  monitorHoras();
-
-  function init(){
-    if ($scope.hora >= 6 && $scope.hora < 12) {
-      $scope.timeMorning = true;
-      $scope.time="morning";
-      console.log('set morning');
-    }
-    else if ($scope.hora >= 12 && $scope.hora <= 18) {
-      $scope.timeAfternoon = true;
-      $scope.time="afternoon";
-      console.log('set afternoon');
-    } else {
-      $scope.timeNight = true;
-      $scope.time="night";
-      console.log('set night');
-    }
-  }
-
-  function monitorHoras(){
-    $interval(function (){
-      var newHour = new Date().getHours();
-      if(newHour != $scope.hora){
-        $scope.hora = newHour;
-        resetTimes();
-        init();
-      }
-    }, 5000);
-  }
-
-  function resetTimes(){
-    $scope.timeMorning = false;
-    $scope.timeAfternoon = false;
-    $scope.timeNight = false;
-  }
-
 })
 
 .controller('TimeCtrl', function($scope, $http){
@@ -265,7 +273,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   });
 })
 
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $ionicModal) {
 
   this.tab = 1;
   $scope.done1 = false;
