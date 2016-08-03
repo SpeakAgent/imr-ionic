@@ -4,8 +4,8 @@
       <div class="row" style="margin: 0!important">
         <div class="col-xs-2"></div>
         <div class="col-xs-2" style="padding: 0!important">
-          <a ng-click="getTodBack()" ng-hide="showWk" class="button icon-left ion-chevron-left leftArrow"></a>
-          <a ng-click="getNextBack()" ng-hide="showToday" class="button icon-left ion-chevron-left leftArrow"></a>
+          <a ng-click="changeDate(-1)" ng-hide="showWk" class="button icon-left ion-chevron-left leftArrow"></a>
+          <a ng-click="changeDate(-1)" ng-hide="showToday" class="button icon-left ion-chevron-left leftArrow"></a>
         </div>
         <div ng-controller="HomeCtrl" class="col-xs-4 scheduleTitle">
           <h3 ng-if="getTod" ng-hide="showWk" class="text-center">Today</h3>
@@ -13,14 +13,13 @@
           
           <h3 ng-show="showWk" ng-hide="showToday" class="text-center-wk">{{today | date:'EEEE'}}</h3>
 
-          <h6 ng-if="getTod;showToday" ng-hide="getTomo" class="text-center weekInfo">{{today | date:'MMMM dd' | uppercase}}</h6>
-          <h6 ng-if="getTomo;showToday" ng-hide="getTod" class="text-center weekInfo">{{tomorrow | date:'MMMM dd' | uppercase}}</h6>
+          <h6 class="text-center weekInfo">{{ targetMonth | uppercase}} {{ targetDay }}</h6>
 
           <h6 ng-if="currentWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 15</h6>
           <h6 ng-if="nextWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 22</h6>
         </div>
-        <div class="col-xs-2" style="padding: 0!important">
-          <a ng-click="getTom()" ng-hide="showWk" class="button icon-right ion-chevron-right rightArrow"></a>
+        <div class="col-xs-2" style="padding: 0!important" ng-controller="HomeCtrl">
+          <a ng-click="changeDate(1)" ng-hide="showWk" class="button icon-right ion-chevron-right rightArrow"></a>
           <a ng-click="getNext()" ng-hide="showToday" class="button icon-right ion-chevron-right rightArrow"></a>
         </div>
         <div class="col-xs-2"></div>
@@ -35,8 +34,7 @@
       <!-- START DAY SECTION -->
       <div class="panel dayPanel" ng-show="panel.isSelected(1)" ng-controller="HomeCtrl">
         <div class="dateSchedule">
-          <h6 ng-if="getTod">{{today | date:'EEEE' | uppercase}} {{today | date:'MMMM dd' | uppercase}}</h6>
-          <h6 ng-if="getTomo">{{tomorrow | date:'EEEE' | uppercase}} {{tomorrow | date:'MMMM dd' | uppercase}}</h6>
+          <h6>{{ }} {{today | date:'MMMM dd' | uppercase}}</h6>
         </div>
         <v-accordion class="vAccordion--default" multiple>
           <v-pane expanded='timeMorning'>
@@ -45,7 +43,7 @@
             </v-pane-header>
 
             <v-pane-content>
-              <a ng-hide="getTomo" href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
+              <a ng-hide="getTomo" href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard"  ng-repeat="task in events.morning">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
@@ -64,14 +62,14 @@
             </v-pane-header>
 
             <v-pane-content>
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
+              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard" ng-repeat="event in events.afternoon">
                 <div class="col-xs-1 afternoonBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/mywork.png" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
+                  <h6 class="time">{{ event.time }}</h6>
+                  <h5 class="task">{{ event.title }} <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
             </v-pane-content>
@@ -83,14 +81,14 @@
             </v-pane-header>
 
             <v-pane-content>
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
+              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard" ng-repeat="event in events.evening">
                 <div class="col-xs-1 eveningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/lifeicon.png" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
+                  <h6 class="time">{{ event.time }}</h6>
+                  <h5 class="task">{{ event.title }} <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
             </v-pane-content>

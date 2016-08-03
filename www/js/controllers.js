@@ -1,61 +1,85 @@
 var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 'ui.bootstrap', 'ngAside'])
 
-.controller('HomeCtrl', function($scope, $interval) {
-  $scope.today = new Date();
-  $scope.tomorrow = new Date();
-  $scope.tomorrow.setDate($scope.tomorrow.getDate() + 1);
-
-  $scope.time = '';
-  $scope.timeMorning = false;
-  $scope.timeAfternoon = false;
-  $scope.timeNight = false;
-
-  $scope.hour = $scope.today.getHours();
-
-  var init = init;
-  var monitorhours = monitorhours;
-  var resetTimes = resetTimes;
-
-  init();
-  monitorhours();
-
-  function init(){
-    if ($scope.hour >= 6 && $scope.hour < 12) {
-      $scope.timeMorning = true;
-      $scope.time="morning";
-      console.log('set morning');
-    }
-    else if ($scope.hour >= 12 && $scope.hour <= 18) {
-      $scope.timeAfternoon = true;
-      $scope.time="afternoon";
-      console.log('set afternoon');
-    } else {
-      $scope.timeNight = true;
-      $scope.time="night";
-      console.log('set night');
-    }
+.controller('HomeCtrl', function($scope, $http) {
+  $scope.monthNames = {
+    '1': 'January',
+    '2': 'February',
+    '3': 'March',
+    '4': 'April',
+    '5': 'May',
+    '6': 'June',
+    '7': 'July',
+    '8': 'August',
+    '9': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
   }
 
-  function monitorhours(){
-    $interval(function (){
-      var newHour = new Date().getHours();
-      if(newHour != $scope.hour){
-        $scope.hour = newHour;
-        resetTimes();
-        init();
-      }
-    }, 5000);
+  if (!$scope.targetDate) {
+    $scope.today = new Date();
+    $scope.target = $scope.today
+    $scope.tomorrow = new Date();
+    $scope.tomorrow.setDate($scope.tomorrow.getDate() + 1);
+    console.log("Getting target date first")
+    var m = $scope.today.getMonth() + 1;
+    $scope.targetDate = $scope.today.getFullYear() + '-' + m + '-' + $scope.today.getDate();
+    $scope.targetDay = $scope.today.getDate();
+    $scope.targetMonth = $scope.monthNames[m.toString()];
+    var req = {
+      url: 'https://iamready.herokuapp.com/events/all/day/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: 'POST'
+    }
+
+    $http(req).success(function(data){
+      $scope.events = data;
+    })
+  } else {
+    var req = {
+      url: 'https://iamready.herokuapp.com/events/all/day/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: 'POST'
+    }
+
+    $http(req).success(function(data){
+      $scope.events = data;
+    })
   }
 
-  function resetTimes(){
-    $scope.timeMorning = false;
-    $scope.timeAfternoon = false;
-    $scope.timeNight = false;
+  $scope.changeDate = function(n) {
+    console.log("Calling change Date")
+    $scope.events = {};
+    // Get vals for current date
+    var v = $scope.targetDate.split('-');
+    var d = parseInt(v[2]) + n;
+    $scope.targetDate = v[0] + "-" + v[1] + "-" + d;
+    $scope.targetDay = d.toString();
+    $scope.targetMonth = $scope.monthNames[v[1]];
+    console.log($scope.targetDay)
+    var req = {
+      url: 'https://iamready.herokuapp.com/events/all/day/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: 'POST'
+    }
+
+    $http(req).success(function(data){
+      $scope.events = data;
+    })
   }
 
 })
 
-.controller('TimeCtrl', function($scope){
+.controller('TimeCtrl', function($scope, $http){
   var h = new Date().getHours();
   if (h >= 6 && h < 12) {
     $scope.time="morning"
@@ -116,14 +140,67 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
 })
 
-.controller('ProfileCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope, $http) {
   $scope.settings = {
     enableFriends: true
   };
+
+  var req = {
+    url: 'https://iamready.herokuapp.com/users/user/one/',
+    data: {
+      pk: 1
+    },
+    method: 'POST'
+  }
+
+  $http(req).success(function(data){
+    $scope.user = data
+  })
+
+
 })
 
-.controller('EmergencyCtrl', function(){
 
+.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http) {
+
+  var req = {
+    url: 'https://iamready.herokuapp.com/users/user/one/',
+    data: {
+      pk: 1
+    },
+    method: 'POST'
+  }
+
+  $http(req).success(function(data){
+    $scope.user = data
+  })
+
+  $scope.play = function(src) {
+    var media = new Media(src, null, null, mediaStatusCallback);
+    $cordovaMedia.play(media);
+  }
+
+  var mediaStatusCallback = function(status) {
+    if(status == 1) {
+      $ionicLoading.show({template: 'Loading...'});
+    } else {
+      $ionicLoading.hide();
+    }
+  }
+})
+
+.controller('EmergencyCtrl', function($scope, $http){
+  var req = {
+    url: 'https://iamready.herokuapp.com/users/user/one/',
+    data: {
+      pk: 1
+    },
+    method: 'POST'
+  }
+
+  $http(req).success(function(data){
+    $scope.user = data
+  })
 })
 
 .controller('PanelController', function ($scope, $ionicPopover, taskService) {
@@ -148,8 +225,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   });
 })
 
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
 
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $ionicModal) {
   this.tab = 1;
   $scope.done1 = false;
   $scope.done2 = false;
@@ -190,6 +267,19 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     }
     return false;
   }
+
+  var req = {
+    url: 'https://iamready.herokuapp.com/events/one/',
+    data: {
+      pk: 1,
+      date: "2016-07-19"
+    },
+    method: "POST"
+  }
+
+  $http(req).success(function(data){
+    $scope.task = data;
+  })
 
   $scope.$on('my-accordion:onReady', function () {
     var firstPane = $scope.panes[0];
