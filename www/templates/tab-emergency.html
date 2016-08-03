@@ -6,9 +6,9 @@
 
 	<div id="contentEmergency">
 	  <div id="profile-info">
-	    <img id="emergency-image" src="img/ben.jpg">
+	    <img id="emergency-image" src="{{ user.photo }}">
 	    <h5 class="subtitleProfile">My name is</h5>
-	    <h3 id="profile-name">Timothylongname Allison-Smithfield</h3>
+	    <h3 id="profile-name">{{ user.first_name }} {{ user.last_name }}</h3>
 	  </div>
 	</div>
 
@@ -17,62 +17,26 @@
 				<h5 class="Heading-Alert">In an emergency, contact:</h5>
 			</div>
 
-		      <div class="container">
+		      <div class="container" ng-repeat="contact in user.contacts">
 		      	<div class="row">
 		      		<div class="col-xs-3">
-		      			<img id="emergency-image-red" src="img/ben.jpg">
+		      			<img id="emergency-image-red" src="{{ contact.photo }}">
 		      		</div>
 		      		<div class="col-xs-9" style="margin-left: 10px">
-		      			<h5 class="subtitleEmergency">Jane Porter</h5>
-		      			<span>Mother</span>
-		      			<p><a href="tel:301-838-5557">301.838.5557</a></p>
+		      			<h5 class="subtitleEmergency">
+		      				{{ contact.first_name }} {{ contact.last_name }}
+		      			</h5>
+		      			<span>{{ contact.relationship }}</span>
+		      			<p><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
 		      		</div>
 		      	</div>
 		      </div>
 
-		      <div class="container">
-		      	<div class="row">
-		      		<div class="col-xs-3">
-		      			<img id="emergency-image-red" src="img/ben.jpg">
-		      		</div>
-		      		<div class="col-xs-9" style="margin-left: 10px">
-		      			<h5 class="subtitleEmergency">Andrew Schmieg</h5>
-		      			<span>Family Doctor</span>
-		      			<p><a href="tel:301-838-5557">301.838.5557</a></p>
-		      		</div>
-		      	</div>
-		      </div>
-
-		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;">
-		      	<h4 class="subtitleEmergency2">Medical:</h4>
-		      	<ul>
-		      		<li style="margin-left: 20px">I am allergic to bees.</li>
-		      		<li style="margin-left: 20px">I have diabetes</li>
-		      	</ul>
-		      </div>
-
-		      <div class="padding" style="margin-top: -20px; margin-bottom: 6px;">
-		      	<h4 class="subtitleEmergency2">You should know that:</h4>
-		      	<ul>
-		      		<li style="margin-left: 20px">I don't like to be touched.</li>
-		      		<li style="margin-left: 20px">I get nervous talking to strangers.</li>
-		      	</ul>
-		      </div>
-
-		      <div class="padding" style="margin-top: -20px; margin-bottom: 6px;">
-		      	<h4 class="subtitleEmergency2">At school:</h4>
-		      	<ul>
-		      		<li style="margin-left: 20px">I don't like to be touched.</li>
-		      		<li style="margin-left: 20px">I get nervous talking to strangers.</li>
-		      	</ul>
-		      </div>
-
-		      <div class="padding" style="margin-top: -30px;">
-		      	<h4 class="subtitleEmergency2">At work:</h4>
-		      	<ul>
-		      		<li style="margin-left: 20px">I don't like to be touched.</li>
-		      		<li style="margin-left: 20px">I get nervous talking to strangers.</li>
-		      	</ul>
+		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;"
+		      ng-repeat="item in user.about"
+		      ng-show="item.item_type=='emergency'">
+		      	<h4 class="subtitleEmergency2">{{ item.title }}</h4>
+		      	<p>{{ item.text }}</p>
 		      </div>
 	</div>
 
