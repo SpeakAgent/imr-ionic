@@ -1,6 +1,18 @@
 mainApp.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading) {
   console.log("Help Words");
 
+  var req = {
+    url: 'https://iamready.herokuapp.com/users/user/one/',
+    data: {
+      pk: 1
+    },
+    method: 'POST'
+  }
+
+  $http(req).success(function(data){
+    $scope.user = data
+  })
+
   //Text to Speech
   $scope.data = {
     lost: 'I am lost.',
@@ -16,10 +28,10 @@ mainApp.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading) {
 
   // make sure your the code gets executed only after `deviceready`.
   document.addEventListener('deviceready', function () {
-    $scope.speakLost = function() {
+    $scope.speak = function() {
       console.log("Yes");
       TTS.speak({
-        text: $scope.data.lost,
+        text: $scope.user,
         locale: 'en-US',
         rate: 1.5
       }, function () {
