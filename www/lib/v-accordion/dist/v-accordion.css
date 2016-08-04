@@ -113,4 +113,4 @@ v-pane-content {
             transition: all 0.25s; }
   .vAccordion--default v-pane-header::before {}
   .vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus {
-    color: #2196F3; }
+  /* color: #2196F3; */ }

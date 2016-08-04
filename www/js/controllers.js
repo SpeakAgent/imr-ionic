@@ -76,6 +76,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $scope.targetDate = $scope.today.getFullYear() + '-' + m + '-' + $scope.today.getDate();
     $scope.targetDay = $scope.today.getDate();
     $scope.targetMonth = $scope.monthNames[m.toString()];
+    $scope.targetYear = $scope.today.getFullYear();
     var req = {
       url: 'https://iamready.herokuapp.com/events/all/day/',
       data: {
