@@ -225,7 +225,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   });
 })
 
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $ionicModal) {
 
   this.tab = 1;
   $scope.done1 = false;
