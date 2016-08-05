@@ -10,7 +10,7 @@
         <div ng-controller="HomeCtrl" class="col-xs-4 scheduleTitle">
           <h3 ng-if="getTod" ng-hide="showWk" class="text-center">Today</h3>
           <h3 ng-if="getTomo" ng-hide="showWk" class="text-center-tom">Tomorrow</h3>
-
+          
           <h3 ng-show="showWk" ng-hide="showToday" class="text-center-wk">{{today | date:'EEEE'}}</h3>
 
           <h6 class="text-center weekInfo">{{ targetMonth | uppercase}} {{ targetDay }}</h6>
@@ -37,7 +37,7 @@
           <h6>{{ }} {{today | date:'MMMM dd' | uppercase}}</h6>
         </div>
         <v-accordion class="vAccordion--default" multiple>
-          <v-pane>
+          <v-pane expanded='timeMorning'>
             <v-pane-header>
               <span class="ion-android-sunny" style="color: #F9B71A;"></span>MORNING
             </v-pane-header>
@@ -56,7 +56,7 @@
             </v-pane-content>
           </v-pane>
 
-          <v-pane>
+          <v-pane expanded='timeAfternoon'>
             <v-pane-header>
               <span class="ion-ios-cloud-outline" style="color: #20A7E1"></span>AFTERNOON
             </v-pane-header>
@@ -75,7 +75,7 @@
             </v-pane-content>
           </v-pane>
 
-          <v-pane>
+          <v-pane expanded='timeNight'>
             <v-pane-header>
               <span class="ion-ios-moon-outline" style="color: #462C83"></span>EVENING
             </v-pane-header>
@@ -109,7 +109,7 @@
             </v-pane-header>
 
             <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek">
+              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek" ng-class="{'success': isSuccessPushMess}">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
@@ -131,7 +131,7 @@
                 </div>
               </a>
 
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek">
+              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek" >
                 <div class="col-xs-1 afternoonBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/mywork.png" class="icon2" alt="">
