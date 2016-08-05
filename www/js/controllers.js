@@ -230,8 +230,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 })
 
 
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
-  console.log("We are actually in the right controller")
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $stateParams) {
   this.tab = 1;
   this.selectTab = function(setTab) {
     this.tab = setTab;
@@ -246,7 +245,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   var req = {
     url: 'http://iamready.herokuapp.com/events/task/one/',
     data: {
-      pk: 41,
+      pk: $stateParams.pk,
     },
     method: "POST"
   }

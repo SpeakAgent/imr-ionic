@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.morning-task-view', {
-    url: '/task-view',
+    url: '/task-view/:pk',
     views: {
       'tab-home': {
         templateUrl: 'templates/morning/task-view.html',
