@@ -1,4 +1,4 @@
-var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
+angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('HomeCtrl', function($scope, $http) {
   $scope.monthNames = {
@@ -157,7 +157,36 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $scope.user = data
   })
 
+  
+})
 
+
+.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http) {
+
+  var req = {
+    url: 'https://iamready.herokuapp.com/users/user/one/',
+    data: {
+      pk: 1
+    },
+    method: 'POST'
+  }
+
+  $http(req).success(function(data){
+    $scope.user = data
+  })
+
+  $scope.play = function(src) {
+    var media = new Media(src, null, null, mediaStatusCallback);
+    $cordovaMedia.play(media);
+  }
+
+  var mediaStatusCallback = function(status) {
+    if(status == 1) {
+      $ionicLoading.show({template: 'Loading...'});
+    } else {
+      $ionicLoading.hide();
+    }
+  }
 })
 
 .controller('EmergencyCtrl', function($scope, $http){
@@ -180,14 +209,14 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     this.tab = setTab;
   };
   this.isSelected = function(checkTab) {
-    if (this.tab === checkTab) {
-      var taskMessage = taskService.getMessages();
-      if (taskMessage != null & taskMessage.length > 0) {
-        $scope.isSuccessPushMess = taskMessage[0].status == 'done';
+      if (this.tab === checkTab) {
+          var taskMessage = taskService.getMessages();
+          if (taskMessage != null & taskMessage.length > 0) {
+              $scope.isSuccessPushMess = taskMessage[0].status == 'done';
+          }
+          return true;
       }
-      return true;
-    }
-    return false;
+      return false;
   }
 
   $scope.$on('my-accordion:onReady', function () {
@@ -199,20 +228,12 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 .controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
   this.tab = 1;
-
   this.selectTab = function(setTab) {
     this.tab = setTab;
   };
 
   this.isSelected = function (checkTab) {
-    //return this.tab === checkTab;
-    if (this.tab === checkTab) {
-      var stepStatus = taskService.getStepStatus();
-      $scope.done1 = stepStatus.isStep1Done;
-      $scope.done2 = stepStatus.isStep2Done;
-      return true;
-    }
-    return false;
+      return this.tab === checkTab;
   }
 
   var req = {
@@ -238,33 +259,14 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   //Fixed for All Steps
+  $scope.done1 = false;
   $scope.doneTask1 = function () {
-    $scope.done1 = true;
-    taskService.setStepStatus($scope.done1, $scope.done2);
+      $scope.done1 = true;
   };
 
-  //$scope.done2 = false;
+  $scope.done2 = false;
   $scope.doneTask2 = function () {
-    $scope.done2 = true;
-    taskService.setStepStatus($scope.done1, $scope.done2);
-    taskService.addMessage({ 'status': 'done' })
+      $scope.done2 = true;
+      taskService.addMessage({ 'status': 'done' })
   };
-
-  //Text to Speech
-  $scope.data = {
-    speechText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  };
-  // make sure your the code gets executed only after `deviceready`.
-  document.addEventListener('deviceready', function () {
-    $scope.speakText = function() {
-      console.log("Yes");
-      TTS.speak({
-        text: $scope.data.speechText,
-        locale: 'en-US',
-        rate: 1.5
-      }, function () {
-        console.log("SPEAK!!!");
-      });
-    }
-  }, false);
 });
