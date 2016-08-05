@@ -784,7 +784,7 @@ ul {
 }
 
 .modal{
-	display: block !important;	
+	display: block !important;
 }
 
 .custom-modal{
@@ -811,4 +811,9 @@ ul {
 
 .custom-modal ion-content{
 	overflow-y: hidden;
+}
+
+h4.important {
+    color: #00486e;
+    margin: 20px 0 -10px 0;
 }

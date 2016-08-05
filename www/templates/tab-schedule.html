@@ -10,10 +10,10 @@
         <div ng-controller="HomeCtrl" class="col-xs-4 scheduleTitle">
           <h3 ng-if="getTod" ng-hide="showWk" class="text-center">Today</h3>
           <h3 ng-if="getTomo" ng-hide="showWk" class="text-center-tom">Tomorrow</h3>
-          
+
           <h3 ng-show="showWk" ng-hide="showToday" class="text-center-wk">{{today | date:'EEEE'}}</h3>
 
-          <h6 class="text-center weekInfo">{{ targetMonth | uppercase}} {{ targetDay }}</h6>
+          <h6 class="text-center weekInfo">{{ targetMonth | uppercase}} {{ targetDay }} {{targetYear}}</h6>
 
           <h6 ng-if="currentWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 15</h6>
           <h6 ng-if="nextWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 22</h6>
@@ -34,7 +34,7 @@
       <!-- START DAY SECTION -->
       <div class="panel dayPanel" ng-show="panel.isSelected(1)" ng-controller="HomeCtrl">
         <div class="dateSchedule">
-          <h6>{{ }} {{today | date:'MMMM dd' | uppercase}}</h6>
+          <h6>{{ }} {{today | date:'MMMM dd yyyy' | uppercase}}</h6>
         </div>
         <v-accordion class="vAccordion--default" multiple>
           <v-pane expanded='timeMorning'>
