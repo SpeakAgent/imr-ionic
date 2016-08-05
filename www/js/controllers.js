@@ -16,6 +16,9 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     '12': 'December'
   }
 
+  $scope.days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+    'Friday', 'Saturday']
+
   if (!$scope.targetDate) {
     $scope.today = new Date();
     $scope.target = $scope.today
@@ -38,6 +41,21 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $http(req).success(function(data){
       $scope.events = data;
     })
+
+    var wreq = {
+      url: 'http://iamready.herokuapp.com/events/all/week/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: "POST"
+    }
+
+    console.log(wreq)
+
+    $http(wreq).success(function(data) {
+      $scope.week = data;
+    })
   } else {
     var req = {
       url: 'https://iamready.herokuapp.com/events/all/day/',
@@ -50,6 +68,21 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
     $http(req).success(function(data){
       $scope.events = data;
+    })
+
+    var wreq = {
+      url: 'http://iamready.herokuapp.com/events/all/week/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: "POST"
+    }
+
+    console.log(wreq)
+
+    $http(wreq).success(function(data) {
+      $scope.week = data;
     })
   }
 
@@ -75,6 +108,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $http(req).success(function(data){
       $scope.events = data;
     })
+
   }
 
 })

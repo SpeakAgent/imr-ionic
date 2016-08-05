@@ -91,313 +91,56 @@
       <!-- END DAY SECTION -->
 
       <!-- START WEEK SECTION -->
-      <div class="panel weekPanel" style="margin-top: 20px;" ng-show="panel.isSelected(2)" ng-controller="TaskViewController">
+      <div class="panel weekPanel" style="margin-top: 20px;" ng-show="panel.isSelected(2)" ng-controller="HomeCtrl">
         <v-accordion class="vAccordion--default" multiple>
 
-          <v-pane>
+          <v-pane ng-repeat="dow in days_of_week">
             <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">SUNDAY MAY 15 <span class="taskQuantity">(4)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">SUNDAY MAY 22 <span class="taskQuantity">(1)</span></h5>
+              <h5 ng-if="currentWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }} <span class="taskQuantity">
+                ({{ week[dow].morning.length + week[dow].afternoon.length + week[dow].evening.length}})
+              </span></h5>
+              <h5 ng-if="nextWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }} <span class="taskQuantity">(1)</span></h5>
             </v-pane-header>
 
             <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek">
+              <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
+               ng-repeat="task in week[dow].morning">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
+                  <h6 class="time">{{ task.start_time }}-{{ task.end_time }}</h6>
+                  <h5 class="task">{{ task.title }}<i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
-
-              <a href="#/tab/transit-task-view" class="button icon-right arrow2 taskCard" ng-class="{'success': isSuccessPushMess}">
-                <div class="col-xs-1 transitBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/onthego.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">1:00pm-1:30pm</h6>
-                  <h5 class="task">Get a ride from Bobby <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard" ng-show="currentWeek">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
-
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">MONDAY MAY 16 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">MONDAY MAY 23 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
+              <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
+               ng-repeat="task in week[dow].afternoon">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
+                  <h6 class="time">{{ task.start_time }}-{{ task.end_time }}</h6>
+                  <h5 class="task">{{ task.title }}<i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
-
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">TUESDAY MAY 17 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">TUESDAY MAY 24 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
+              <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
+               ng-repeat="task in week[dow].evening">
                 <div class="col-xs-1 morningBorderBox"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
+                  <h6 class="time">{{ task.start_time }}-{{ task.end_time }}</h6>
+                  <h5 class="task">{{ task.title }}<i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
 
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
             </v-pane-content>
           </v-pane>
 
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">WEDNESDAY MAY 18 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">WEDNESDAY MAY 25 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 morningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/icon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
-
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">THURSDAY MAY 19 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">THURSDAY MAY 26 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 morningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/icon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
-
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">FRIDAY MAY 20 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">FRIDAY MAY 27 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 morningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/icon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
-
-          <v-pane>
-            <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">SATURDAY MAY 21 <span class="taskQuantity">(3)</span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">SATURDAY MAY 28 <span class="taskQuantity">(3)</span></h5>
-            </v-pane-header>
-
-            <v-pane-content>
-              <a href="#/tab/morning-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 morningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/icon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">10:00am-12:00pm</h6>
-                  <h5 class="task">Math Tutoring <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/afternoon-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 afternoonBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/mywork.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">2:00pm-4:00pm</h6>
-                  <h5 class="task">Can Crushing <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-
-              <a href="#/tab/night-task-view" class="button icon-right arrow2 taskCard">
-                <div class="col-xs-1 eveningBorderBox"></div>
-                <div class="col-xs-2">
-                  <img src="img/lifeicon.png" class="icon2" alt="">
-                </div>
-                <div class="col-xs-8">
-                  <h6 class="time">7:00pm-9:00pm</h6>
-                  <h5 class="task">Dinner at Sam's house <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
-                </div>
-              </a>
-            </v-pane-content>
-          </v-pane>
+          
 
         </v-accordion>
       </div>
