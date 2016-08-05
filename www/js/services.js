@@ -1,15 +1,15 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function () {
+.factory('Chats', function() {
 
   return {
-    all: function () {
+    all: function() {
       return chats;
     },
-    remove: function (chat) {
+    remove: function(chat) {
       chats.splice(chats.indexOf(chat), 1);
     },
-    get: function (chatId) {
+    get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
         if (chats[i].id === parseInt(chatId)) {
           return chats[i];
@@ -21,33 +21,19 @@ angular.module('starter.services', [])
 })
 
 .service('taskService', function () {
-  var messageList = [];
-  var stepStatus = {};
-  stepStatus.isStep1Done = false;
-  stepStatus.isStep2Done = false;
+    var messageList = [];
 
+    var addMessage = function (newObj) {
+        messageList.push(newObj);
+    };
 
-  var addMessage = function (newObj) {
-    messageList.push(newObj);
-  };
+    var getMessages = function () {
+        return messageList;
+    };
 
-  var getMessages = function () {
-    return messageList;
-  };
+    return {
+        addMessage: addMessage,
+        getMessages: getMessages
+    };
 
-  var setStepStatus = function (isStep1Done, isStep2Done) {
-    stepStatus.isStep1Done = isStep1Done;
-    stepStatus.isStep2Done = isStep2Done;
-  }
-
-  var getStepStatus = function () {
-    return stepStatus;
-  }
-
-  return {
-    addMessage: addMessage,
-    getMessages: getMessages,
-    setStepStatus: setStepStatus,
-    getStepStatus: getStepStatus
-  };
 });
