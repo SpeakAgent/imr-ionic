@@ -97,6 +97,18 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   }
   console.log(h);
   console.log($scope.time);
+
+  var req = {
+        url: "http://iamready.herokuapp.com/events/task/next/",
+        data: {
+            pk: 1,
+        },
+        method: "POST"
+    }
+
+    $http(req).success(function(data) {
+        $scope.event = data
+    })
 })
 
 .controller('ScheduleCtrl', function($scope) {
