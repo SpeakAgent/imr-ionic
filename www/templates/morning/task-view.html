@@ -26,10 +26,10 @@
       <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
       <div class="card">
         <div class="item item-text-wrap task-item">
-          <h4>Step 1</h4>
+          <h4>Step {{ stepNum + 1 }}</h4>
           <div class="item item-thumbnail-left task-item">
-            <img src="img/mt.png">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <img src="{{ task.steps[stepNum].image }}">
+            <p>{{ task.steps[stepNum].title }}</p>
             <div class="col-xs-1">
             	<img src="img/speak.png" class="valign speaker">
               <a class="button button-small button-assertive speakButton valign speakView">
@@ -44,9 +44,15 @@
           </button>
         </div>
       </div>
+      <div class="text-left">
+        <div class="padding" ng-show="stepNum != 0">
+          <a ng-click="stepNum = stepNum - 1" class="button icon-left ion-chevron-left arrow3"><span class="nextStep">Previous</span></a>
+        </div>
+      </div>
+    </div>
       <div class="text-right">
-        <div class="padding">
-          <a href="#/tab/morning-next-step" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Next</span></a>
+        <div class="padding" ng-show="stepNum != maxStepNum ">
+          <a ng-click="stepNum = stepNum + 1" class="button icon-right ion-chevron-right arrow3"><span class="nextStep">Next</span></a>
         </div>
       </div>
     </div>
@@ -55,12 +61,12 @@
     <!-- START WEEK SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(2)">
       <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
-      <div class="card">
+      <div class="card" ng-repeat="step in task.steps">
         <div class="item item-text-wrap task-item">
-          <h4>Step 1</h4>
+          <h4>Step {{ $index + 1 }}</h4>
           <div class="item item-thumbnail-left task-item">
-            <img src="img/mt.png">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <img src="{{ step.image }}">
+            <p>{{ step.title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
               <a class="button button-small button-assertive speakButton valign speakView">
@@ -71,27 +77,6 @@
           <i ng-hide="done1" class="ion-checkmark-round checkmark"></i>
           <i ng-show="done1" class="ion-checkmark-circled checkmarkDone"></i>
           <button ng-click="doneTask1()" ng-hide="done1" class="button button-small button-assertive doneButton">
-            Done!
-          </button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="item item-text-wrap task-item">
-          <h4>Step 2</h4>
-          <div class="item item-thumbnail-left task-item">
-            <img src="img/mt.png">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="col-xs-1">
-              <img src="img/headphone.png" class="valign speaker">
-              <a class="button button-small button-assertive speakButton valign speakView">
-                Listen
-              </a>
-            </div>
-          </div>
-          <i ng-hide="done2" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done2" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask2()" ng-hide="done2" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>

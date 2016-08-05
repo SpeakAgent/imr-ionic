@@ -140,6 +140,10 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 })
 
+.controller('TaskSingleView', function($scope, $http){
+})
+
+
 .controller('ProfileCtrl', function($scope, $http) {
   $scope.settings = {
     enableFriends: true
@@ -227,6 +231,7 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
 
 .controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http) {
+  console.log("We are actually in the right controller")
   this.tab = 1;
   this.selectTab = function(setTab) {
     this.tab = setTab;
@@ -236,17 +241,21 @@ angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
       return this.tab === checkTab;
   }
 
+  $scope.stepNum = 0;
+
   var req = {
-    url: 'https://iamready.herokuapp.com/events/one/',
+    url: 'http://iamready.herokuapp.com/events/task/one/',
     data: {
-      pk: 1,
-      date: "2016-07-19"
+      pk: 41,
     },
     method: "POST"
   }
 
+  console.log(req)
+
   $http(req).success(function(data){
     $scope.task = data;
+    $scope.maxStepNum = $scope.task.steps.length - 1
   })
 
   $scope.$on('my-accordion:onReady', function () {
