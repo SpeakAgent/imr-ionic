@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
     <div class="bar bar-header morningHeader">
-      <a ui-sref="tab.home" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+      <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
     </div>
     <br>
     <br>
@@ -23,7 +23,10 @@
 
     <!-- START DAY SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(1)">
-      <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
+      <div class="text-center">
+        <button class="btn btn-primary btn-small taskHelp" ng-click="openModal()">Get help with this task</button>
+        <h4 class="important">Note: Bring your apron!</h4>
+      </div>
       <div class="card">
         <div class="item item-text-wrap task-item">
           <h4>Step {{ stepNum + 1 }}</h4>
