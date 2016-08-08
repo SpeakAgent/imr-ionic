@@ -319,12 +319,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
   this.isSelected = function (checkTab) {
     return this.tab === checkTab;
-    // if (this.tab === checkTab) {
-    //   var stepStatus = taskService.getStepStatus();
-    //   $scope.done = stepStatus.isStep1Done;
-    //   return true;
-    // }
-    // return false;
   }
 
   $scope.stepNum = 0;
@@ -341,7 +335,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
   $http(req).success(function(data){
     $scope.task = data;
-    $scope.maxStepNum = $scope.task.steps.length - 1
+    $scope.maxStepNum = $scope.task.steps.length - 1;
   })
 
   $scope.$on('my-accordion:onReady', function () {
@@ -356,7 +350,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   //Fixed for All Steps
   $scope.doneTask = function () {
     $scope.done = !$scope.done;
-    $scope.doneStyle = true;
+    //console.log($scope.task.steps[0].status);
   };
 
   // make sure your the code gets executed only after `deviceready`.

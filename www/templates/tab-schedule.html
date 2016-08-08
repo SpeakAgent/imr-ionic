@@ -1,5 +1,5 @@
 <ion-view hide-nav-bar="true" view-title="Schedule" ng-controller="HomeCtrl">
-  <ion-content>
+  <ion-content ng-controller="PanelController as panel">
     <div class="container">
       <div class="row row-centered">
         <div class="col-xs-4 col-centered">
@@ -14,17 +14,18 @@
 
         <div class="col-xs-5 col-centered scheduleTitle" ng-show="showWk" ng-hide="getTod">
           <h3 class="text-center">{{today | date:'EEEE'}}</h3>
-          <h6 ng-if="currentWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF {{ targetMonth | uppercase }} {{ targetDay }}</h6>
-          <h6 ng-if="nextWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 22</h6>
+          <!-- <h6 ng-if="currentWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF {{ targetMonth | uppercase }} {{ targetDay }}</h6>
+          <h6 ng-if="nextWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 22</h6> -->
         </div>
 
-        <div class="col-xs-4 col-centered">
+        <div class="col-xs-4 col-centered" ng-if="getTod" ng-hide="showWk">
           <a ng-click="changeDate(1)" class="button icon-right ion-chevron-right arrows"></a>
         </div>
+
       </div>
     </div>
 
-    <div class="container" ng-controller="PanelController as panel">
+    <div class="container">
       <div class="row row-centered">
         <ul class="nav nav-pills col-xs-12 col-centered" style="line-height: 12px;">
           <li ng-class="{ active: panel.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(1);showDay()" class="dayList">Day</a></li>
@@ -100,16 +101,16 @@
       <!-- END DAY SECTION -->
 
       <!-- START WEEK SECTION -->
-      <div class="panel weekPanel" style="margin-top: 20px;" ng-show="panel.isSelected(2)" ng-controller="HomeCtrl">
+      <div class="panel weekPanel" style="margin-top: 20px;" ng-show="panel.isSelected(2)">
         <v-accordion class="vAccordion--default" multiple>
 
           <v-pane ng-repeat="dow in days_of_week">
-          <v-pane>
             <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }} <span class="taskQuantity">
+              <h5 ng-if="currentWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }}
+                <span class="taskQuantity">
                 ({{ week[dow].morning.length + week[dow].afternoon.length + week[dow].evening.length}})
-              </span></h5>
-              <h5 ng-if="nextWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }} <span class="taskQuantity">(1)</span></h5>
+              </span>
+            </h5>
             </v-pane-header>
 
             <v-pane-content>

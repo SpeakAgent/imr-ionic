@@ -41,8 +41,8 @@
             </div>
           </div>
           <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done" ng-click="doneTask()" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask()" ng-hide="done" class="button button-small button-assertive doneButton">
+          <i ng-show="done" ng-click="doneTask($index)" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneTask($index)" ng-hide="done" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>
@@ -63,7 +63,10 @@
 
     <!-- START WEEK SECTION -->
     <div class="taskView" ng-show="taskView.isSelected(2)">
-      <button class="btn btn-primary btn-small taskHelp">Get help with this task</button>
+      <div class="text-center">
+        <button class="btn btn-primary btn-small taskHelp" ng-click="openModal()">Get help with this task</button>
+        <h4 class="important">Note: Bring your apron!</h4>
+      </div>
       <div class="card" ng-repeat="step in task.steps">
         <div class="item item-text-wrap task-item">
           <h4>Step {{ $index + 1 }}</h4>
@@ -78,8 +81,8 @@
             </div>
           </div>
           <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="done" ng-click="doneTask()" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneTask()" ng-hide="done" class="button button-small button-assertive doneButton">
+          <i  ng-show="done" ng-click="doneTask($index)" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneTask($index)" ng-hide="done" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>
