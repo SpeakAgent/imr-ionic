@@ -176,6 +176,29 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     })
 
   }
+
+  var currentDate = moment();
+  var fnWeekDays = function(dt) {
+  var currentDate = dt;
+  var weekStart = currentDate.clone().startOf('week');
+  var weekEnd = currentDate.clone().endOf('week');
+  var days = [];
+
+  for (i = 0; i <= 6; i++) {
+     days.push(moment(weekStart).add(i, 'days').format("dddd MMMM D"));
+   };
+
+   return days;
+  }
+
+  $scope.weekDays = fnWeekDays(currentDate);
+  $scope.nextWeek = function(dt) {
+   $scope.weekDays = fnWeekDays(moment(dt, "dddd MMMM D").add(1, 'days'));
+  };
+
+  $scope.previousWeek = function(dt) {
+   $scope.weekDays = fnWeekDays(moment(dt, "dddd MMMM D").subtract(1, 'days'));
+  };
 })
 
 .controller('TimeCtrl', function($scope, $http){

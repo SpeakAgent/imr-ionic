@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row row-centered">
         <div class="col-xs-4 col-centered">
-          <a ng-click="changeDate(-1)" class="button icon-left ion-chevron-left arrows"></a>
+          <a ng-show="panel.isSelected(1)" ng-click="changeDate(-1)" class="button icon-left ion-chevron-left arrows"></a>
+          <a ng-show="panel.isSelected(2)" ng-click="previousWeek(weekDays[0])" class="button icon-left ion-chevron-left arrows"></a>
         </div>
 
         <div class="col-xs-5 col-centered scheduleTitle" ng-if="getTod" ng-hide="showWk">
@@ -19,7 +20,8 @@
         </div>
 
         <div class="col-xs-4 col-centered" ng-if="getTod" ng-hide="showWk">
-          <a ng-click="changeDate(1)" class="button icon-right ion-chevron-right arrows"></a>
+          <a ng-show="panel.isSelected(1)" ng-click="changeDate(1)" class="button icon-right ion-chevron-right arrows"></a>
+          <a ng-show="panel.isSelected(2)" ng-click="nextWeek(weekDays[6])" class="button icon-right ion-chevron-right arrows"></a>
         </div>
 
       </div>
@@ -104,13 +106,15 @@
       <div class="panel weekPanel" style="margin-top: 20px;" ng-show="panel.isSelected(2)">
         <v-accordion class="vAccordion--default" multiple>
 
-          <v-pane ng-repeat="dow in days_of_week">
+          <v-pane ng-repeat="day in weekDays">
             <v-pane-header>
-              <h5 ng-if="currentWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }}
+              <h5 ng-if="currentWeek" class="weekDay">{{ day }}
+            </h5>
+              <!-- <h5 ng-if="currentWeek" class="weekDay">{{ dow }} {{ monthNames[week[dow].month] }} {{ week[dow].date }}
                 <span class="taskQuantity">
                 ({{ week[dow].morning.length + week[dow].afternoon.length + week[dow].evening.length}})
               </span>
-            </h5>
+            </h5> -->
             </v-pane-header>
 
             <v-pane-content>
@@ -150,9 +154,6 @@
 
             </v-pane-content>
           </v-pane>
-
-
-
         </v-accordion>
       </div>
     </div>
