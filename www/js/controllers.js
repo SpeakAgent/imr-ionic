@@ -348,9 +348,19 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   //Fixed for All Steps
-  $scope.doneTask = function () {
-    $scope.done = !$scope.done;
-    //console.log($scope.task.steps[0].status);
+  $scope.doneStep = function (pk) {
+    var sreq = {
+      url: "http://iamready.herokuapp.com/step/update/",
+      data: {
+        task_pk: $scope.task.pk,
+        step_pk: pk
+      },
+      method: "POST"
+    }
+
+    $http(req).success(function(data){
+      $scope.task = data
+    })
   };
 
   // make sure your the code gets executed only after `deviceready`.
