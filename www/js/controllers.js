@@ -263,13 +263,11 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $http(tts_req).success(function(data){
       $scope.user = data
       var tts = $scope.user.phrases[index].text;
-      console.log(tts);
       $scope.speakText(tts);
     })
   }
 
     $scope.speakText = function(text) {
-      console.log("Yes");
       TTS.speak({
         text: text,
         locale: 'en-US',
@@ -384,7 +382,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
   //TTS For Single Steps.
   $scope.saySingle = function (index) {
-    console.log(index);
     var tts_req = {
       url: 'http://iamready.herokuapp.com/events/task/one/',
       data: {
@@ -393,17 +390,13 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
       method: "POST"
     }
 
-    console.log(tts_req);
-
     $http(tts_req).success(function(data){
       $scope.task = data;
       var tts = $scope.task.steps[index].title;
-      console.log(tts);
       $scope.speakText(tts);
     })
 
     $scope.speakText = function(text) {
-      console.log("Yes");
       TTS.speak({
         text: text,
         locale: 'en-US',
