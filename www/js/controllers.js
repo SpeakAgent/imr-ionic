@@ -249,6 +249,35 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   $http(req).success(function(data){
     $scope.user = data
   })
+
+  // TTS For Help Words.
+  $scope.sayPhrase = function (index) {
+    var tts_req = {
+      url: 'https://iamready.herokuapp.com/users/user/one/',
+      data: {
+        pk: 1
+      },
+      method: 'POST'
+    }
+
+    $http(tts_req).success(function(data){
+      $scope.user = data
+      var tts = $scope.user.phrases[index].text;
+      console.log(tts);
+      $scope.speakText(tts);
+    })
+  }
+
+    $scope.speakText = function(text) {
+      console.log("Yes");
+      TTS.speak({
+        text: text,
+        locale: 'en-US',
+        rate: 1.5
+      }, function () {
+        console.log("SPEAK!!!");
+      });
+    }
 })
 
 .controller('EmergencyCtrl', function($scope, $http){
@@ -353,17 +382,66 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     //console.log($scope.task.steps[0].status);
   };
 
-  // make sure your the code gets executed only after `deviceready`.
-  document.addEventListener('deviceready', function () {
-    $scope.speakText = function() {
+  //TTS For Single Steps.
+  $scope.saySingle = function (index) {
+    console.log(index);
+    var tts_req = {
+      url: 'http://iamready.herokuapp.com/events/task/one/',
+      data: {
+        pk: $stateParams.pk,
+      },
+      method: "POST"
+    }
+
+    console.log(tts_req);
+
+    $http(tts_req).success(function(data){
+      $scope.task = data;
+      var tts = $scope.task.steps[index].title;
+      console.log(tts);
+      $scope.speakText(tts);
+    })
+
+    $scope.speakText = function(text) {
       console.log("Yes");
       TTS.speak({
-        text: $scope.task.steps[0].title,
+        text: text,
         locale: 'en-US',
         rate: 1.5
       }, function () {
         console.log("SPEAK!!!");
       });
     }
-  }, false);
+  }
+
+  // TTS For All Steps.
+  $scope.sayAll = function (index) {
+    console.log(index);
+    var tts_req = {
+      url: 'http://iamready.herokuapp.com/events/task/one/',
+      data: {
+        pk: $stateParams.pk,
+      },
+      method: "POST"
+    }
+
+    console.log(tts_req);
+
+    $http(tts_req).success(function(data){
+      $scope.task = data;
+      var tts = $scope.task.steps[index].title;
+      $scope.speakText(tts);
+    })
+  }
+
+  $scope.speakText = function(text) {
+    console.log("Yes");
+    TTS.speak({
+      text: text,
+      locale: 'en-US',
+      rate: 1.5
+    }, function () {
+      console.log("SPEAK!!!");
+    });
+  }
 });

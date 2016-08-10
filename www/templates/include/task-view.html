@@ -25,7 +25,7 @@
     <div class="taskView" ng-show="taskView.isSelected(1)">
       <div class="text-center">
         <button class="btn btn-primary btn-small taskHelp" ng-click="openModal()">Get help with this task</button>
-        <h4 class="important">Note: Bring your apron!</h4>
+        <h4 class="important">Note: {{task.help_text}}</h4>
       </div>
       <div class="card">
         <div class="item item-text-wrap task-item">
@@ -35,7 +35,7 @@
             <p>{{ task.steps[stepNum].title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
-              <a class="button button-small button-assertive speakButton valign speakView">
+              <a class="button button-small button-assertive speakButton valign speakView" ng-click="saySingle(stepNum)">
                 Listen
               </a>
             </div>
@@ -65,7 +65,7 @@
     <div class="taskView" ng-show="taskView.isSelected(2)">
       <div class="text-center">
         <button class="btn btn-primary btn-small taskHelp" ng-click="openModal()">Get help with this task</button>
-        <h4 class="important">Note: Bring your apron!</h4>
+        <h4 class="important">Note: {{task.help_text}}</h4>
       </div>
       <div class="card" ng-repeat="step in task.steps">
         <div class="item item-text-wrap task-item">
@@ -75,7 +75,7 @@
             <p>{{ step.title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
-              <a class="button button-small button-assertive speakButton valign speakView">
+              <a class="button button-small button-assertive speakButton valign speakView" ng-click="sayAll($index)" ng-model="tts.current">
                 Listen
               </a>
             </div>
