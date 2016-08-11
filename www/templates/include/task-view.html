@@ -46,10 +46,10 @@
       </div>
       <div class="card">
         <div class="item item-text-wrap task-item">
-          <h4>Step {{ stepNum + 1 }}</h4>
+          <h4>Step {{ $index + 1 }}</h4>
           <div class="item item-thumbnail-left task-item">
             <img src="{{ task.steps[stepNum].image }}">
-            <p>{{ task.steps[stepNum].title }}</p>
+            <p>{{ task.steps[$index].title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
               <a class="button button-small button-assertive speakButton valign speakView" ng-click="saySingle(stepNum)">
@@ -98,10 +98,10 @@
               </a>
             </div>
           </div>
-          <i ng-hide="task.steps[stepNum].status == 'done'" ng-show="task.steps[stepNum].status != 'done'" class="ion-checkmark-round checkmark"></i>
-          <i ng-show="task.steps[stepNum].status == 'done'" ng-click="undoStep(task.steps[stepNum].pk, stepNum)" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneStep(task.steps[stepNum].pk, stepNum)"
-            ng-hide="task.steps[stepNum].status == 'done'" ng-show="task.steps[stepNum].status != 'done'" class="button button-small button-assertive doneButton">
+          <i ng-hide="task.steps[$index].status == 'done'" ng-show="task.steps[$index].status != 'done'" class="ion-checkmark-round checkmark"></i>
+          <i ng-show="task.steps[$index].status == 'done'" ng-click="undoStep(task.steps[$index].pk, $index)" class="ion-checkmark-circled checkmarkDone"></i>
+          <button ng-click="doneStep(task.steps[$index].pk, $index)"
+            ng-hide="task.steps[$index].status == 'done'" ng-show="task.steps[$index].status != 'done'" class="button button-small button-assertive doneButton">
             Done!
           </button>
         </div>
