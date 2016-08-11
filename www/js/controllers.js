@@ -375,9 +375,19 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   //Fixed for All Steps
-  $scope.doneTask = function () {
-    $scope.done = !$scope.done;
-    //console.log($scope.task.steps[0].status);
+  $scope.doneStep = function (pk, stepNum) {
+    var sreq = {
+      url: "http://iamready.herokuapp.com/events/step/update/",
+      data: {
+        task_pk: $scope.task.pk,
+        step_pk: pk
+      },
+      method: "POST"
+    }
+
+    $http(sreq).success(function(data){
+      $scope.task.steps[stepNum].status = "done";
+    })
   };
 
   //TTS For Single Steps.
