@@ -42,7 +42,7 @@
           </div>
           <i ng-hide="done" class="ion-checkmark-round checkmark"></i>
           <i ng-show="done" class="ion-checkmark-circled checkmarkDone"></i>
-          <button ng-click="doneStep(task.steps[stepNum].pk)" 
+          <button ng-click="doneStep(task.steps[stepNum].pk, stepNum)" 
             ng-hide="task.steps[stepNum].status == 'done'" class="button button-small button-assertive doneButton">
             Done!
           </button>

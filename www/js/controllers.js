@@ -348,9 +348,9 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   //Fixed for All Steps
-  $scope.doneStep = function (pk) {
+  $scope.doneStep = function (pk, stepNum) {
     var sreq = {
-      url: "http://iamready.herokuapp.com/step/update/",
+      url: "http://iamready.herokuapp.com/events/step/update/",
       data: {
         task_pk: $scope.task.pk,
         step_pk: pk
@@ -358,8 +358,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
       method: "POST"
     }
 
-    $http(req).success(function(data){
-      $scope.task = data
+    $http(sreq).success(function(data){
+      $scope.task.steps[stepNum].status = "done";
     })
   };
 
