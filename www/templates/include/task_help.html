@@ -1,10 +1,19 @@
 <ion-modal-view class="custom-modal">
   <ion-header-bar class="bar bar-header">
-    <h1 class="title">Get help with task</h1>
+    <h1 class="title"></h1>
     <button class="button button-outline icon-right ion-close no-border-color" ng-click="closeModal()">
+      Close
     </button>
   </ion-header-bar>
   <ion-content class="padding">
-    <p></p>
+    <h4 class="titleH text-center">Person who can help you out with this task:</h4>
+    <div class="content row-eq-height" ng-repeat="help in task.helpers">
+      <ul class="helpers-modal">
+        <li><img class="helpers-image" src="{{ help.photo }}"></li>
+        <li>
+          <h4 class="helpersSubtitle">{{ help.first_name }} {{ help.last_name }}</h4>
+      	  <h5 class="helpersSubtitle"><u><a href="tel:{{ help.phone }}">{{ help.phone }}</a></u></h5>
+        </li>
+      </ul>
   </ion-content>
 </ion-modal-view>

@@ -23,6 +23,10 @@
 	background: #fff;
 }
 
+.bar-header {
+	background: #fff;
+}
+
 .welcome {
 	margin-top: -50px;
 }
@@ -818,4 +822,35 @@ ul {
 h4.important {
     color: #00486e;
     margin: 20px 0 -10px 0;
+}
+
+/* HELPERS MODAL */
+h4.titleH {
+    color: #00486e;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.helpers-modal {
+	list-style-type: none;
+}
+.helpers-modal li {
+    float: left;
+    margin: 15px 0px 15px 15px;
+}
+
+.helpersSubtitle {
+	color: #00355D;
+	font-size: 16px !important;
+	line-height: 16px;
+	font-weight: bold!important;
+	margin-bottom: 10px!important;
+}
+
+.helpers-image {
+	display: block;
+	border-radius: 100px;
+	border: 4px solid #20A7E1;
+	width: 60px;
+	height: 60px;
 }
