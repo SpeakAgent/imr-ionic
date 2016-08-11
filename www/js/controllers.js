@@ -298,14 +298,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     this.tab = setTab;
   };
   this.isSelected = function(checkTab) {
-    if (this.tab === checkTab) {
-      var taskMessage = taskService.getMessages();
-      if (taskMessage != null & taskMessage.length > 0) {
-        $scope.isSuccessPushMess = taskMessage[0].status == 'done';
-      }
-      return true;
-    }
-    return false;
+    return this.tab === checkTab;
   }
 
   $scope.$on('my-accordion:onReady', function () {
@@ -387,6 +380,22 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
     $http(sreq).success(function(data){
       $scope.task.steps[stepNum].status = "done";
+    })
+  };
+
+
+  $scope.undoStep = function (pk, stepNum) {
+    var ureq = {
+      url: "http://iamready.herokuapp.com/events/step/update/",
+      data: {
+        task_pk: $scope.task.pk,
+        step_pk: pk
+      },
+      method: "POST"
+    }
+
+    $http(ureq).success(function(data){
+      $scope.task.steps[stepNum].status = "not_started";
     })
   };
 
