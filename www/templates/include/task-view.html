@@ -1,7 +1,24 @@
 <ion-view hide-nav-bar="true" ng-controller="TaskViewController as taskView">
   <ion-content style="background: #DDD">
-    <div class="bar bar-header morningHeader">
+  <div ng-if="!task.task_type.color || task.task_type.color != 'yellow' || task.task_type.color != 'green' || task.task_type.color != 'purple'">
+    <div class="bar bar-header defaultHeader">
       <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+    </div>
+  </div>
+    <div ng-if="task.task_type.color == 'yellow'">
+      <div class="bar bar-header morningHeader">
+        <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+      </div>
+    </div>
+    <div ng-if="task.task_type.color == 'green'">
+      <div class="bar bar-header afternoonHeader">
+        <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+      </div>
+    </div>
+    <div ng-if="task.task_type.color == 'purple'">
+      <div class="bar bar-header nightHeader">
+        <a ui-sref="tab.schedule" class="button button-clear button-positive item-icon-right ion-close-round"></a>
+      </div>
     </div>
     <br>
     <br>

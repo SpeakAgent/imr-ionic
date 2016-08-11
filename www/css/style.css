@@ -120,6 +120,11 @@
 	border-left: solid 32px #462C83;
 }
 
+.defaultHeader {
+	background-color: #00486e;
+	height: 36px;
+}
+
 .morningHeader {
 	background-color: #F9B71A;
 	height: 36px;
