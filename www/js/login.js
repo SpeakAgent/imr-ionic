@@ -5,14 +5,15 @@ mainApp.controller('LoginCtrl', function($scope, $aside, $ionicModal, LoginServi
   $scope.passError = false;
 
   $scope.sign = function() {
-    LoginService.loginUser($scope.data.username, $scope.data.password)
-    .success(function(data) {
-      $window.location.reload(true);
-      $state.go('tab.home');
-    }).error(function(data) {
-      $scope.userError = true;
-      $scope.passError = true;
-    });
+    $state.go('tab.home');
+    // LoginService.loginUser($scope.data.username, $scope.data.password)
+    // .success(function(data) {
+    //   $window.location.reload(true);
+    //   $state.go('tab.home');
+    // }).error(function(data) {
+    //   $scope.userError = true;
+    //   $scope.passError = true;
+    // });
   }
 
   $scope.login = function () {

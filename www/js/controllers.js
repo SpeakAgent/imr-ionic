@@ -231,14 +231,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.user = data
   })
 
-<<<<<<< HEAD
-
-})
-=======
-
 })
 
->>>>>>> 2c3f3b309519eaf2284f67d26cbab67fbbdac843
 
 .controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http) {
 
@@ -311,12 +305,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   });
 })
 
-<<<<<<< HEAD
 .controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $stateParams, $ionicModal) {
-=======
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $ionicModal) {
-
->>>>>>> 2c3f3b309519eaf2284f67d26cbab67fbbdac843
   this.tab = 1;
   $scope.done = false;
 
