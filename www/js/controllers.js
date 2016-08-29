@@ -1,6 +1,6 @@
 var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
-.controller('HomeCtrl', function($scope, $http, $interval) {
+.controller('HomeCtrl', function($scope, $http, $interval, $filter) {
   $scope.today = new Date();
 
   $scope.time = '';
@@ -66,6 +66,13 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     '12': 'December'
   }
 
+  $scope.days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+    'Friday', 'Saturday']
+
+    if ($scope.targetDate == $scope.currentDate ) {
+      $scope.yesToday = true;
+    }
+
   if (!$scope.targetDate) {
     $scope.today = new Date();
     $scope.target = $scope.today
@@ -77,6 +84,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $scope.targetDay = $scope.today.getDate();
     $scope.targetMonth = $scope.monthNames[m.toString()];
     $scope.targetYear = $scope.today.getFullYear();
+
     var req = {
       url: 'https://iamready.herokuapp.com/events/all/day/',
       data: {
@@ -88,6 +96,21 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
     $http(req).success(function(data){
       $scope.events = data;
+    })
+
+    var wreq = {
+      url: 'http://iamready.herokuapp.com/events/all/week/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: "POST"
+    }
+
+    console.log(wreq)
+
+    $http(wreq).success(function(data) {
+      $scope.week = data;
     })
   } else {
     var req = {
@@ -102,17 +125,42 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $http(req).success(function(data){
       $scope.events = data;
     })
+
+    var wreq = {
+      url: 'http://iamready.herokuapp.com/events/all/week/',
+      data: {
+        user_pk: 1,
+        date: $scope.targetDate
+      },
+      method: "POST"
+    }
+
+    console.log(wreq)
+
+    $http(wreq).success(function(data) {
+      $scope.week = data;
+    })
   }
 
   $scope.changeDate = function(n) {
     console.log("Calling change Date")
     $scope.events = {};
     // Get vals for current date
+    $scope.currentDate = $filter('date')(new Date(), 'yyyy-M-d');
+
     var v = $scope.targetDate.split('-');
     var d = parseInt(v[2]) + n;
     $scope.targetDate = v[0] + "-" + v[1] + "-" + d;
     $scope.targetDay = d.toString();
     $scope.targetMonth = $scope.monthNames[v[1]];
+
+    if ($scope.targetDate == $scope.currentDate ) {
+      $scope.yesToday = true;
+    } else {
+      $scope.yesToday = false;
+    }
+
+    console.log($scope.targetDate)
     console.log($scope.targetDay)
     var req = {
       url: 'https://iamready.herokuapp.com/events/all/day/',
@@ -126,6 +174,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $http(req).success(function(data){
       $scope.events = data;
     })
+
   }
 })
 
@@ -147,6 +196,18 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   }
   console.log(h);
   console.log($scope.time);
+
+  var req = {
+        url: "http://iamready.herokuapp.com/events/task/next/",
+        data: {
+            pk: 1,
+        },
+        method: "POST"
+    }
+
+    $http(req).success(function(data) {
+        $scope.event = data
+    })
 })
 
 .controller('ScheduleCtrl', function($scope) {
@@ -157,44 +218,9 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
 
   $scope.currentWeek = true;
   $scope.nextWeek = false;
-
-  $scope.getTom = function () {
-    $scope.getTod = false;
-    $scope.getTomo = true;
-  }
-
-  $scope.getTodBack = function () {
-    $scope.getTod = true;
-    $scope.getTomo = false;
-  }
-
-  $scope.showWeek = function () {
-    $scope.showWk = true;
-    $scope.showToday = false;
-  }
-
-  $scope.showDay = function () {
-    $scope.showWk = false;
-    $scope.showToday = true;
-  }
-
-  $scope.getNext = function () {
-    $scope.currentWeek = false;
-    $scope.nextWeek = true;
-  }
-
-  $scope.getNextBack = function () {
-    $scope.currentWeek = true;
-    $scope.nextWeek = false;
-  }
-
 })
 
 .controller('ProfileCtrl', function($scope, $http) {
-  $scope.settings = {
-    enableFriends: true
-  };
-
   var req = {
     url: 'https://iamready.herokuapp.com/users/user/one/',
     data: {
@@ -224,18 +250,32 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     $scope.user = data
   })
 
-  $scope.play = function(src) {
-    var media = new Media(src, null, null, mediaStatusCallback);
-    $cordovaMedia.play(media);
+  // TTS For Help Words.
+  $scope.sayPhrase = function (index) {
+    var tts_req = {
+      url: 'https://iamready.herokuapp.com/users/user/one/',
+      data: {
+        pk: 1
+      },
+      method: 'POST'
+    }
+
+    $http(tts_req).success(function(data){
+      $scope.user = data
+      var tts = $scope.user.phrases[index].text;
+      $scope.speakText(tts);
+    })
   }
 
-  var mediaStatusCallback = function(status) {
-    if(status == 1) {
-      $ionicLoading.show({template: 'Loading...'});
-    } else {
-      $ionicLoading.hide();
+    $scope.speakText = function(text) {
+      TTS.speak({
+        text: text,
+        locale: 'en-US',
+        rate: 1.5
+      }, function () {
+        console.log("SPEAK!!!");
+      });
     }
-  }
 })
 
 .controller('EmergencyCtrl', function($scope, $http){
@@ -258,14 +298,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     this.tab = setTab;
   };
   this.isSelected = function(checkTab) {
-    if (this.tab === checkTab) {
-      var taskMessage = taskService.getMessages();
-      if (taskMessage != null & taskMessage.length > 0) {
-        $scope.isSuccessPushMess = taskMessage[0].status == 'done';
-      }
-      return true;
-    }
-    return false;
+    return this.tab === checkTab;
   }
 
   $scope.$on('my-accordion:onReady', function () {
@@ -274,11 +307,9 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   });
 })
 
-.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $ionicModal) {
-
+.controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $stateParams, $ionicModal) {
   this.tab = 1;
-  $scope.done1 = false;
-  $scope.done2 = false;
+  $scope.done = false;
 
   $ionicModal.fromTemplateUrl('templates/include/task_help.html', {
     id: 1,
@@ -286,7 +317,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
     animation: 'slide-in-up',
   }).then(function(modal) {
     $scope.modalGetHelpWithTask = modal;
-    console.log('Modal: ', modal);
   });
 
   $scope.openModal = function() {
@@ -308,27 +338,24 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   this.isSelected = function (checkTab) {
-    //return this.tab === checkTab;
-    if (this.tab === checkTab) {
-      var stepStatus = taskService.getStepStatus();
-      $scope.done1 = stepStatus.isStep1Done;
-      $scope.done2 = stepStatus.isStep2Done;
-      return true;
-    }
-    return false;
+    return this.tab === checkTab;
   }
 
+  $scope.stepNum = 0;
+
   var req = {
-    url: 'https://iamready.herokuapp.com/events/one/',
+    url: 'http://iamready.herokuapp.com/events/task/one/',
     data: {
-      pk: 1,
-      date: "2016-07-19"
+      pk: $stateParams.pk,
     },
     method: "POST"
   }
 
+  console.log(req)
+
   $http(req).success(function(data){
     $scope.task = data;
+    $scope.maxStepNum = $scope.task.steps.length - 1;
   })
 
   $scope.$on('my-accordion:onReady', function () {
@@ -341,33 +368,92 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova'])
   };
 
   //Fixed for All Steps
-  $scope.doneTask1 = function () {
-    $scope.done1 = !$scope.done1;
-    taskService.setStepStatus($scope.done1, $scope.done2);
+  $scope.doneStep = function (pk, stepNum) {
+    var sreq = {
+      url: "http://iamready.herokuapp.com/events/step/update/",
+      data: {
+        task_pk: $scope.task.pk,
+        step_pk: pk
+      },
+      method: "POST"
+    }
+
+    $http(sreq).success(function(data){
+      $scope.task.steps[stepNum].status = "done";
+    })
   };
 
-  //$scope.done2 = false;
-  $scope.doneTask2 = function () {
-    $scope.done2 = !$scope.done2;
-    taskService.setStepStatus($scope.done1, $scope.done2);
-    taskService.addMessage({ 'status': 'done' })
+
+  $scope.undoStep = function (pk, stepNum) {
+    var ureq = {
+      url: "http://iamready.herokuapp.com/events/step/update/",
+      data: {
+        task_pk: $scope.task.pk,
+        step_pk: pk
+      },
+      method: "POST"
+    }
+
+    $http(ureq).success(function(data){
+      $scope.task.steps[stepNum].status = "not_started";
+    })
   };
 
-  //Text to Speech
-  $scope.data = {
-    speechText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  };
-  // make sure your the code gets executed only after `deviceready`.
-  document.addEventListener('deviceready', function () {
-    $scope.speakText = function() {
-      console.log("Yes");
+  //TTS For Single Steps.
+  $scope.saySingle = function (index) {
+    var tts_req = {
+      url: 'http://iamready.herokuapp.com/events/task/one/',
+      data: {
+        pk: $stateParams.pk,
+      },
+      method: "POST"
+    }
+
+    $http(tts_req).success(function(data){
+      $scope.task = data;
+      var tts = $scope.task.steps[index].title;
+      $scope.speakText(tts);
+    })
+
+    $scope.speakText = function(text) {
       TTS.speak({
-        text: $scope.data.speechText,
+        text: text,
         locale: 'en-US',
         rate: 1.5
       }, function () {
         console.log("SPEAK!!!");
       });
     }
-  }, false);
+  }
+
+  // TTS For All Steps.
+  $scope.sayAll = function (index) {
+    console.log(index);
+    var tts_req = {
+      url: 'http://iamready.herokuapp.com/events/task/one/',
+      data: {
+        pk: $stateParams.pk,
+      },
+      method: "POST"
+    }
+
+    console.log(tts_req);
+
+    $http(tts_req).success(function(data){
+      $scope.task = data;
+      var tts = $scope.task.steps[index].title;
+      $scope.speakText(tts);
+    })
+  }
+
+  $scope.speakText = function(text) {
+    console.log("Yes");
+    TTS.speak({
+      text: text,
+      locale: 'en-US',
+      rate: 1.5
+    }, function () {
+      console.log("SPEAK!!!");
+    });
+  }
 });

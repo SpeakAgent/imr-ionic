@@ -8,45 +8,27 @@
         <h2 id="profile-name">I'm {{ user.first_name }}</h2>
       </div>
 
-      <div class="card" style="padding-bottom: 12px;"
-        ng-repeat="item in user.about"
-        ng-show="item.item_type=='profile'">
-        <div class="item item-text-wrap profileCard">
-          <div class="col-xs-2">
-            <img class="iLiveAtIcon" src="img/Address-Icon@2x.png" alt="">
-          </div>
-          <div class="col-xs-10">
-            <h2 class="subtitleProfile">{{ item.title }}</h2>
-            <h2>{{ item.text }}</h2>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="card" style="padding-bottom: 12px;">
+      <div class="card" style="padding-bottom: 12px;">
         <div class="item item-text-wrap profileCard">
           <div class="col-xs-2">
             <img class="iLiveAtIcon" src="img/Address-Icon@2x.png" alt="">
           </div>
           <div class="col-xs-10">
             <h2 class="subtitleProfile">I live at:</h2>
-            <h2>155 Gibbs Street</h2>
-            <h2>Rockville, MD xxxxx</h2>
+            <h2>{{ user.street }}</h2>
+            <h2>{{ user.city }}, {{ user.state }} {{ user.zipcode }}</h2>
           </div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" style="padding-bottom: 12px;">
         <div class="item item-text-wrap profileCard">
           <div class="col-xs-2">
             <img class="iLiveAtIcon" src="img/Like-Icon@2x.png" alt="">
           </div>
           <div class="col-xs-10">
             <h2 class="subtitleProfile">Stuff I like:</h2>
-            <ul>
-              <li>Star Wars</li>
-              <li>Swimming</li>
-              <li>Chipotle</li>
-            </ul>
+            <h2>{{ user.stuff_i_like }}
           </div>
         </div>
       </div>
@@ -58,25 +40,22 @@
           </div>
           <div class="col-xs-10">
             <h2 class="subtitleProfile">I go to School at:</h2>
-            <h2>Montgomery Blair High School</h2>
+            <h2>{{ user.school }}</h2>
           </div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" style="padding-bottom: 12px;">
         <div class="item item-text-wrap profileCard">
           <div class="col-xs-2">
             <img class="iLiveAtIcon" src="img/MyWork-Icon@2x.png" alt="">
           </div>
           <div class="col-xs-10">
             <h2 class="subtitleProfile">I work at:</h2>
-            <ul>
-              <li>GIANT</li>
-              <li>Other workplace</li>
-            </ul>
+            <h2>{{ user.work }}</h2>
           </div>
         </div>
-      </div> -->
+      </div>
 
     </div>
   </ion-content>

@@ -43,81 +43,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.morning-task-view', {
-    url: '/morning-task-view',
+  .state('tab.task-view', {
+    url: '/task-view/:pk',
     views: {
       'tab-schedule': {
-        templateUrl: 'templates/morning/task-view.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.morning-next-step', {
-    url: '/morning-next-step',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/morning/next-step.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.transit-task-view', {
-    url: '/transit-task-view',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/transit/task-view.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.transit-next-step', {
-    url: '/transit-next-step',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/transit/next-step.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.afternoon-task-view', {
-    url: '/afternoon-task-view',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/afternoon/task-view.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.afternoon-next-step', {
-    url: '/afternoon-next-step',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/afternoon/next-step.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.night-task-view', {
-    url: '/night-task-view',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/night/task-view.html',
-        controller: 'TaskViewController'
-      }
-    }
-  })
-
-  .state('tab.night-next-step', {
-    url: '/night-next-step',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/night/next-step.html',
+        templateUrl: 'templates/include/task-view.html',
         controller: 'TaskViewController'
       }
     }

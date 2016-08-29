@@ -17,7 +17,7 @@
 				<h5 class="Heading-Alert">In an emergency, contact:</h5>
 			</div>
 
-		      <div class="container" ng-repeat="contact in user.contacts">
+		      <div class="container" ng-repeat="contact in user.emergency_contacts">
 		      	<div class="row">
 		      		<div class="col-xs-3">
 		      			<img id="emergency-image-red" src="{{ contact.photo }}">
@@ -32,11 +32,24 @@
 		      	</div>
 		      </div>
 
-		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;"
-		      ng-repeat="item in user.about"
-		      ng-show="item.item_type=='emergency'">
-		      	<h4 class="subtitleEmergency2">{{ item.title }}</h4>
-		      	<p>{{ item.text }}</p>
+		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;">
+		      	<h4 class="subtitleEmergency2">Medical:</h4>
+		      	<p>{{ user.medical }}</p>
+		      </div>
+
+		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;">
+		      	<h4 class="subtitleEmergency2">At work:</h4>
+		      	<p>{{ user.at_work }}</p>
+		      </div>
+
+		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;">
+		      	<h4 class="subtitleEmergency2">At school:</h4>
+		      	<p>{{ user.at_school }}</p>
+		      </div>
+
+		      <div class="padding" style="margin-top: -10px; margin-bottom: 6px;">
+		      	<h4 class="subtitleEmergency2">You should know:</h4>
+		      	<p>{{ user.should_know }}</p>
 		      </div>
 	</div>
 
