@@ -75,7 +75,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
   if (!$scope.targetDate) {
     $scope.today = new Date();
-    $scope.target = $scope.today
+    $scope.target = new Date();
     $scope.tomorrow = new Date();
     $scope.tomorrow.setDate($scope.tomorrow.getDate() + 1);
     console.log("Getting target date first")
@@ -142,26 +142,27 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     })
   }
 
+  $scope.compareDates = function(d1, d2) {
+    console.log(d1.getDate(), d2.getDate())
+    if (d1.getDate() == d2.getDate() && 
+      d1.getMonth() == d2.getMonth() &&
+        d1.getYear() == d2.getYear()) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   $scope.changeDate = function(n) {
     console.log("Calling change Date")
     $scope.events = {};
     // Get vals for current date
-    $scope.currentDate = $filter('date')(new Date(), 'yyyy-M-d');
+    $scope.target.setDate($scope.target.getDate() + n);
 
-    var v = $scope.targetDate.split('-');
-    var d = parseInt(v[2]) + n;
-    $scope.targetDate = v[0] + "-" + v[1] + "-" + d;
-    $scope.targetDay = d.toString();
-    $scope.targetMonth = $scope.monthNames[v[1]];
+    $scope.yesToday = $scope.compareDates($scope.target, $scope.today)
 
-    if ($scope.targetDate == $scope.currentDate ) {
-      $scope.yesToday = true;
-    } else {
-      $scope.yesToday = false;
-    }
+    $scope.targetDate = $scope.target.getFullYear() + '-' + $scope.target.getMonth() + '-' + $scope.target.getDate();
 
-    console.log($scope.targetDate)
-    console.log($scope.targetDay)
     var req = {
       url: 'https://iamready.herokuapp.com/events/all/day/',
       data: {

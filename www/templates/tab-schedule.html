@@ -8,8 +8,8 @@
 
         <div class="col-xs-5 col-centered scheduleTitle" ng-if="getTod" ng-hide="showWk">
           <h3 ng-if="yesToday" class="text-center">Today</h3>
-          <h3 ng-if="!yesToday" class="text-center">{{ targetMonth | date:'MMM'}} {{ targetDay }}</h3>
-          <h6 class="text-center weekInfo">{{ targetMonth | uppercase}} {{ targetDay }} {{targetYear}}</h6>
+          <h3 ng-if="!yesToday" class="text-center">{{ target | date: 'MMMM dd' }}</h3>
+          <h6 class="text-center weekInfo">{{ target | date:'MMMM dd, yyyy'}}</h6>
         </div>
 
         <div class="col-xs-5 col-centered scheduleTitle" ng-show="showWk" ng-hide="getTod">
