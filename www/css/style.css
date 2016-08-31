@@ -859,3 +859,20 @@ h4.titleH {
 	width: 60px;
 	height: 60px;
 }
+
+/* Pull to Refresh */
+.icon-pulling {
+	width: 110% !important;
+}
+
+.scroll-refresher.active .icon-pulling:not(.pulling-rotation-disabled) {
+	width: 90% !important;
+}
+
+.home .icon-pulling, .home .text-pulling {
+	color: #fff;
+}
+
+.home .spinner-ios {
+    stroke: #fff !important;
+}

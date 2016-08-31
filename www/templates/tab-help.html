@@ -1,5 +1,6 @@
 <ion-view hide-nav-bar="true" view-title="help">
   <ion-content class="helpWords" ng-controller="HelpCtrl">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
   	<h3 id="helpTitle">Help Words</h3>
     <ul class="list">
         <li class="item item-icon-left helpBorder" ng-repeat="phrase in user.phrases" ng-click="sayPhrase($index)">
