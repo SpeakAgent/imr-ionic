@@ -95,22 +95,28 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.targetYear = $scope.today.getFullYear();
 
     var req = {
-      url: 'https://iamready.herokuapp.com/events/all/day/',
+      url: 'http://iamready.herokuapp.com/events/all/day/',
       data: {
-        user_pk: 1,
+        user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(req).success(function(data){
       $scope.events = data;
+      console.log("Today's events", data)
+    }).error(function(data) {
+      console.log(data)
     })
 
     var wreq = {
       url: 'http://iamready.herokuapp.com/events/all/week/',
       data: {
-        user_pk: 1,
+        user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
       method: "POST"
@@ -123,9 +129,9 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     })
   } else {
     var req = {
-      url: 'https://iamready.herokuapp.com/events/all/day/',
+      url: 'http://iamready.herokuapp.com/events/all/day/',
       data: {
-        user_pk: 1,
+        user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
       method: 'POST'
@@ -138,7 +144,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     var wreq = {
       url: 'http://iamready.herokuapp.com/events/all/week/',
       data: {
-        user_pk: 1,
+        user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
       method: "POST"
@@ -173,9 +179,9 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.targetDate = $scope.target.getFullYear() + '-' + $scope.target.getMonth() + '-' + $scope.target.getDate();
 
     var req = {
-      url: 'https://iamready.herokuapp.com/events/all/day/',
+      url: 'http://iamready.herokuapp.com/events/all/day/',
       data: {
-        user_pk: 1,
+        user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
       method: 'POST'
@@ -245,7 +251,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
 .controller('ProfileCtrl', function($scope, $http, $window) {
   var req = {
-    url: 'https://iamready.herokuapp.com/users/user/one/',
+    url: 'http://iamready.herokuapp.com/users/user/one/',
     data: {
       pk: 1
     },
@@ -269,7 +275,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 .controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http, $window) {
 
   var req = {
-    url: 'https://iamready.herokuapp.com/users/user/one/',
+    url: 'http://iamready.herokuapp.com/users/user/one/',
     data: {
       pk: 1
     },
@@ -283,7 +289,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   // TTS For Help Words.
   $scope.sayPhrase = function (index) {
     var tts_req = {
-      url: 'https://iamready.herokuapp.com/users/user/one/',
+      url: 'http://iamready.herokuapp.com/users/user/one/',
       data: {
         pk: 1
       },
@@ -317,7 +323,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
 .controller('EmergencyCtrl', function($scope, $http, $window){
   var req = {
-    url: 'https://iamready.herokuapp.com/users/user/one/',
+    url: 'http://iamready.herokuapp.com/users/user/one/',
     data: {
       pk: 1
     },
