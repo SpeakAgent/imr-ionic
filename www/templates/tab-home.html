@@ -1,5 +1,6 @@
 <ion-view hide-nav-bar="true" class="Home">
-  <ion-content class="wrapper" ng-class="time">
+  <ion-content class="wrapper home" ng-class="time">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
     <div class="welcome" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <h2 class="text-center HomeTitle">Good Morning! <br> Today is</h2>
       <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>

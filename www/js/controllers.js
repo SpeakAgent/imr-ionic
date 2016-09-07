@@ -1,7 +1,9 @@
 var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 'ui.bootstrap', 'ngAside'])
 
-.controller('HomeCtrl', function($scope, $http, $interval, $filter) {
+.controller('HomeCtrl', function($scope, $http, $interval, $filter, $window) {
   $scope.today = new Date();
+
+  console.log($scope.today);
 
   $scope.time = '';
   $scope.timeMorning = false;
@@ -32,6 +34,13 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       $scope.time="night";
       console.log('set night');
     }
+  }
+
+  $scope.doRefresh = function() {
+    $window.location.reload();
+    console.log($scope.today);
+    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply()
   }
 
   function monitorhours(){
@@ -215,6 +224,12 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     function toTime(timeString){
       var timeTokens = timeString.split(':');
       return new Date(1970,0,1, timeTokens[0], timeTokens[1], timeTokens[2]);
+
+    $scope.doRefresh = function() {
+      $window.location.reload();
+      console.log($scope.today);
+      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$apply();
     }
 })
 
@@ -228,7 +243,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   $scope.nextWeek = false;
 })
 
-.controller('ProfileCtrl', function($scope, $http) {
+.controller('ProfileCtrl', function($scope, $http, $window) {
   var req = {
     url: 'https://iamready.herokuapp.com/users/user/one/',
     data: {
@@ -241,10 +256,17 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.user = data
   })
 
+  $scope.doRefresh = function() {
+    $window.location.reload();
+    console.log($scope.today);
+    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply()
+  }
+
 })
 
 
-.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http) {
+.controller('HelpCtrl', function($scope, $cordovaMedia, $ionicLoading, $http, $window) {
 
   var req = {
     url: 'https://iamready.herokuapp.com/users/user/one/',
@@ -284,9 +306,16 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         console.log("SPEAK!!!");
       });
     }
+
+    $scope.doRefresh = function() {
+      $window.location.reload();
+      console.log($scope.today);
+      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$apply()
+    }
 })
 
-.controller('EmergencyCtrl', function($scope, $http){
+.controller('EmergencyCtrl', function($scope, $http, $window){
   var req = {
     url: 'https://iamready.herokuapp.com/users/user/one/',
     data: {
@@ -298,9 +327,17 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   $http(req).success(function(data){
     $scope.user = data
   })
+
+  $scope.doRefresh = function() {
+    $window.location.reload();
+    console.log($scope.today);
+    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply()
+  }
+
 })
 
-.controller('PanelController', function ($scope, $ionicPopover, taskService) {
+.controller('PanelController', function ($scope, $ionicPopover, taskService, $window) {
   this.tab = 1;
   this.selectTab = function(setTab) {
     this.tab = setTab;
@@ -313,6 +350,14 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     var firstPane = $scope.panes[0];
     $scope.accordion.toggle(firstPane.id);
   });
+
+  $scope.doRefresh = function() {
+    $window.location.reload();
+    console.log($scope.today);
+    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply()
+  }
+
 })
 
 .controller('TaskViewController', function ($scope, $ionicPopover, $ionicHistory, taskService, $http, $stateParams, $ionicModal) {
@@ -463,5 +508,12 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     }, function () {
       console.log("SPEAK!!!");
     });
+  }
+
+  $scope.doRefresh = function() {
+    $window.location.reload();
+    console.log($scope.today);
+    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply()
   }
 });
