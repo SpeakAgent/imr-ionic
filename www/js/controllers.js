@@ -91,11 +91,17 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(req).success(function(data){
       $scope.events = data;
+      console.log("Today's events", data)
+    }).error(function(data) {
+      console.log(data)
     })
 
     var wreq = {
