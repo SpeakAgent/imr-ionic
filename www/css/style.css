@@ -88,8 +88,7 @@
 
 .HomeNumber {
 	color: #fff;
-	margin-top: -15px;
-	font-size: 50px;
+	font-size: 35px;
 	font-weight: bold;
 }
 
@@ -860,6 +859,9 @@ h4.titleH {
 	height: 60px;
 }
 
+.userDetails {
+	margin-left: 20px;
+	
 /* Pull to Refresh */
 .icon-pulling {
 	width: 110% !important;

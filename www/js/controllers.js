@@ -116,7 +116,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       method: "POST"
     }
 
-    console.log(wreq)
+    console.log(wreq);
 
     $http(wreq).success(function(data) {
       $scope.week = data;
@@ -186,7 +186,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     })
   }})
 
-.controller('TimeCtrl', function($scope, $http){
+.controller('TimeCtrl', function($scope, $http, $filter){
   var h = new Date().getHours();
   if (h >= 6 && h < 12) {
     $scope.time="morning"
@@ -214,14 +214,22 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     }
 
     $http(req).success(function(data) {
-        $scope.event = data
+        $scope.event = data;
+        var start = toTime(data.start_time);
+        var end = toTime(data.end_time);
+        data.start_time = start;
+        data.end_time = end;
     })
+
+    function toTime(timeString){
+      var timeTokens = timeString.split(':');
+      return new Date(1970,0,1, timeTokens[0], timeTokens[1], timeTokens[2]);
 
     $scope.doRefresh = function() {
       $window.location.reload();
       console.log($scope.today);
       $scope.$broadcast('scroll.refreshComplete');
-      $scope.$apply()
+      $scope.$apply();
     }
 })
 

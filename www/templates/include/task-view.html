@@ -46,10 +46,10 @@
       </div>
       <div class="card">
         <div class="item item-text-wrap task-item">
-          <h4>Step {{ $index + 1 }}</h4>
+          <h4>Step {{ stepNum + 1}}</h4>
           <div class="item item-thumbnail-left task-item">
             <img src="{{ task.steps[stepNum].image }}">
-            <p>{{ task.steps[$index].title }}</p>
+            <p>{{ task.steps[stepNum].title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
               <a class="button button-small button-assertive speakButton valign speakView" ng-click="saySingle(stepNum)">

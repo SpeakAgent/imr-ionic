@@ -5,7 +5,7 @@
     <ul class="list">
         <li class="item item-icon-left helpBorder" ng-repeat="phrase in user.phrases" ng-click="sayPhrase($index)">
           <div class="col-xs-1">
-          	<img src="img/Lost@2x.png" class="helpIcon">
+          	<img src="{{ phrase.icon }}" class="helpIcon">
           </div>
           <div class="col-xs-7">
           	<span class="valign subtitleProfile">{{ phrase.text }}</span>
