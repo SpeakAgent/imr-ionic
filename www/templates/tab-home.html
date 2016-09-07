@@ -3,8 +3,8 @@
     <div class="welcome" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <h2 class="text-center HomeTitle">Good Morning! <br> Today is</h2>
       <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
-      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
-      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+      <!-- <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4> -->
+      <h1 class="text-center HomeNumber">{{today | date:'MMMM dd, yyyy'}}</h1>
     </div>
 
     <div class="welcome" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
