@@ -46,7 +46,8 @@
 
             <v-pane-content>
               <a href="#/tab/task-view/{{task.task.pk}}" class="button icon-right arrow2 taskCard"  ng-repeat="task in events.morning" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 morningBorderBox"></div>
+                <div class="col-xs-1 morningBorderBox"
+                style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
@@ -65,7 +66,8 @@
 
             <v-pane-content>
               <a href="#/tab/task-view/{{task.task.pk}}" class="button icon-right arrow2 taskCard"  ng-repeat="task in events.afternoon" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 afternoonBorderBox"></div>
+                <div class="col-xs-1 afternoonBorderBox"
+                style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
@@ -84,7 +86,8 @@
 
             <v-pane-content>
               <a href="#/tab/task-view/{{task.task.pk}}" class="button icon-right arrow2 taskCard" ng-repeat="task in events.evening" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 eveningBorderBox"></div>
+                <div class="col-xs-1 eveningBorderBox"
+                style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
@@ -116,7 +119,8 @@
             <v-pane-content>
               <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
                ng-repeat="task in week[dow].morning" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 morningBorderBox"></div>
+                <div class="col-xs-1 morningBorderBox"
+                  style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
@@ -127,7 +131,8 @@
               </a>
               <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
                ng-repeat="task in week[dow].afternoon" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 morningBorderBox"></div>
+                <div class="col-xs-1 morningBorderBox"
+                  style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
@@ -138,7 +143,8 @@
               </a>
               <a href="#/tab/task-view/{{ task.task.pk }}" class="button icon-right arrow2 taskCard" ng-show="currentWeek"
                ng-repeat="task in week[dow].evening" ng-class="task.status='done' ? 'success' : 'clear'">
-                <div class="col-xs-1 morningBorderBox"></div>
+                <div class="col-xs-1 morningBorderBox"
+                style="background-color:{{ task.task.task_type.color }}"></div>
                 <div class="col-xs-2">
                   <img src="img/icon.png" class="icon2" alt="">
                 </div>
