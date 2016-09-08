@@ -620,6 +620,18 @@ md-option {
 	margin: 0;
 }
 
+.homeIcon i {
+	background: #00486E;
+	color: white;
+	border-radius: 50px;
+	font-size: 30px;
+	width: 40px;
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
 .helpIcon {
 	width: 40px;
     margin-left: -49px;
@@ -861,7 +873,7 @@ h4.titleH {
 
 .userDetails {
 	margin-left: 20px;
-	
+
 /* Pull to Refresh */
 .icon-pulling {
 	width: 110% !important;
