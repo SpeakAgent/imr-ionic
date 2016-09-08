@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'vAccordion', 'angularMoment', 'ngCordova', 'ui.router', 'uiRouterStyles', 'ui.bootstrap', 'ngAside'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'vAccordion', 'angularMoment', 'ngCordova', 'ui.router', 'uiRouterStyles', 'ui.bootstrap', 'ngAside', 'angular-jwt'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
