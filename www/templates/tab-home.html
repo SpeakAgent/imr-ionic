@@ -11,15 +11,15 @@
     <div class="welcome" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
       <h2 class="text-center HomeTitle">Good Afternoon! <br> Today is</h2>
       <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
-      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
-      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+      <!-- <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4> -->
+      <h1 class="text-center HomeNumber">{{today | date:'MMMM dd, yyyy'}}</h1>
     </div>
 
     <div class="welcome" ng-show="time === 'night'" ng-hide="time != 'night'">
       <h2 class="text-center HomeTitle">Good Evening! <br> Today is</h2>
       <h2 class="text-center HomeDay">{{today | date:'EEEE'}}</h2>
-      <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4>
-      <h1 class="text-center HomeNumber">{{today | date:'dd'}}</h1>
+      <!-- <h4 class="text-center HomeMonth">{{today | date:'MMMM'}}</h4> -->
+      <h1 class="text-center HomeNumber">{{today | date:'MMMM dd, yyyy'}}</h1>
     </div>
 
     <a href="#/tab/task-view/{{ event.task.pk }}" ng-show="time === 'morning'" ng-hide="time != 'morning'">
@@ -32,7 +32,7 @@
 
             <div class="col-md-7 homeTask" ng-show="time === 'morning'" ng-hide="time != 'morning'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
+              <p class="text-left hour">{{ event.start_time  }} - {{ event.end_time }}</p>
               <h4 class="text-left topic">{{ event.title }}</h4>
             </div>
 
@@ -54,7 +54,7 @@
 
             <div class="col-md-7 homeTask" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
+              <p class="text-left hour">{{ event.start_time  }} - {{ event.end_time }}</p>
               <h4 class="text-left topic">{{ event.title }}</h4>
             </div>
 
@@ -76,7 +76,7 @@
 
             <div class="col-md-7 homeNightTask" ng-show="time === 'night'" ng-hide="time != 'night'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
+              <p class="text-left hour">{{ event.start_time }} - {{ event.end_time }}</p>
               <h4 class="text-left topic">{{ event.title }}</h4>
             </div>
 
