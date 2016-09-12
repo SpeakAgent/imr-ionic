@@ -53,7 +53,7 @@
                   <img src="{{ task.task.task_type.image }}" class="icon2" alt="">
                 </div>
                 <div class="col-xs-8">
-                  <h6 class="time">{{ task.start_time }}-{{ task.end_time }}</h6>
+                  <h6 class="time">{{ task.start_time | date : 'YYYY' }}-{{ task.end_time }}</h6>
                   <h5 class="task">{{ task.title }} <i class="fa fa-angle-double-right" aria-hidden="true"></i></h5>
                 </div>
               </a>
