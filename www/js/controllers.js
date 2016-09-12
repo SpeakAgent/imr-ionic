@@ -221,13 +221,14 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(req).success(function(data) {
         $scope.event = data;
+        console.log(data);
         var start = toTime(data.start_time);
         var end = toTime(data.end_time);
         data.start_time = start;
         data.end_time = end;
-    })
+    });
 
-    function toTime(timeString){
+    function toTime(timeString) {
       var timeTokens = timeString.split(':');
       return new Date(1970,0,1, timeTokens[0], timeTokens[1], timeTokens[2]);
     }
