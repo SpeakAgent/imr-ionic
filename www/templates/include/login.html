@@ -7,7 +7,7 @@
   <div class="form-group pass">
     <label ng-show="!passError">Password</label> <label ng-show="passError" class="passError">Check Password</label> <br />
     <input ng-show="!passError" type="password" ng-model="loginData.password"> <input ng-show="passError" class="passError" type="password" ng-model="loginData.password">
-    <a ng-click="openModal();"><em>Forgot password?</em></a>
+    <a href="mailto:someone@example.com?Subject=Contact%20us%20to%20retrieve%20your%20password."><em>Forgot password?</em></a>
   </div>
 </div>
 <button class="button button-block button-calm login-button" ng-click="doLogin()">Sign In</button>

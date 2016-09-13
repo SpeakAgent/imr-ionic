@@ -43,6 +43,36 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.$apply()
   }
 
+  $scope.setTimes = function() {
+    ['morning', 'afternoon', 'evening'].forEach(function(tod){
+      console.log(tod, $scope.events[tod])
+      for (var i in $scope.events[tod]) {
+        // This SHOULD use JS's Date, but for some reason
+        // we keep getting strings back.
+        console.log($scope.events[tod][i].start_time)
+        var v = $scope.events[tod][i].start_time.split(":")
+        if (parseInt(v[0]) > 12) {
+          h = String(parseInt(v[0]) - 12);
+          ap = "PM"
+        } else {
+          h = String(parseInt(v[0]))
+          ap = "AM"
+        }
+        $scope.events[tod][i].start_time = h + ":" + v[1] + " " + ap;
+
+        var v = $scope.events[tod][i].end_time.split(":")
+        if (parseInt(v[0]) > 12) {
+          h = String(parseInt(v[0]) - 12);
+          ap = "PM"
+        } else {
+          h = String(parseInt(v[0]));
+          ap = "AM"
+        }
+        $scope.events[tod][i].end_time = h + ":" + v[1] + " " + ap;
+      }
+    })
+  }
+
   function monitorhours(){
     $interval(function (){
       var newHour = new Date().getHours();
@@ -108,7 +138,13 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(req).success(function(data){
       $scope.events = data;
-      console.log("Today's events", data)
+      $scope.setTimes();
+      console.log("Today's events", data);
+      var t = $scope.events.afternoon[0].start_time.split(":");
+      var d = new Date();
+      d.setHours(t[0]);
+      d.setMinutes(t[1]);
+      console.log(d);
     }).error(function(data) {
       console.log(data)
     })
@@ -139,6 +175,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(req).success(function(data){
       $scope.events = data;
+      $scope.setTimes();
     })
 
     var wreq = {
@@ -189,6 +226,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(req).success(function(data){
       $scope.events = data;
+      $scope.setTimes();
     })
   }})
 
