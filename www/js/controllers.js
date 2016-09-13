@@ -44,7 +44,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
   }
 
   $scope.setTimes = function() {
-    ['morning', 'afternoon', 'evening'].forEach(function(tod){
+    ['morning', 'afternoon', 'evening', 'week'].forEach(function(tod){
       console.log(tod, $scope.events[tod])
       for (var i in $scope.events[tod]) {
         // This SHOULD use JS's Date, but for some reason
