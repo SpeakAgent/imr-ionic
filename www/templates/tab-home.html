@@ -22,7 +22,7 @@
       <h1 class="text-center HomeNumber">{{today | date:'MMMM dd, yyyy'}}</h1>
     </div>
 
-    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'morning'" ng-hide="time != 'morning'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}/{{ targetDate }}" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -44,7 +44,7 @@
       </div>
     </a>
 
-    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}/{{ targetDate }}" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -66,7 +66,7 @@
       </div>
     </a>
 
-    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'night'" ng-hide="time != 'night'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}/{{ targetDate }}" ng-show="time === 'night'" ng-hide="time != 'night'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
