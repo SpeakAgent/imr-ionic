@@ -3,8 +3,12 @@
     <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
     <div class="container">
       <div class="row row-centered">
-        <div class="col-xs-4 col-centered">
+        <div class="col-xs-4 col-centered" ng-hide="showWk">
           <a ng-click="changeDate(-1)" class="button icon-left ion-chevron-left arrows"></a>
+        </div>
+
+        <div class="col-xs-4 col-centered" ng-show="showWk">
+          <a ng-click="changeWeek(-7)" class="button icon-left ion-chevron-left arrows"></a>
         </div>
 
         <div class="col-xs-5 col-centered scheduleTitle" ng-if="getTod" ng-hide="showWk">
@@ -23,14 +27,18 @@
           <a ng-click="changeDate(1)" class="button icon-right ion-chevron-right arrows"></a>
         </div>
 
+        <div class="col-xs-4 col-centered" ng-show="showWk">
+          <a ng-click="changeWeek(7)" class="button icon-right ion-chevron-right arrows"></a>
+        </div>
+
       </div>
     </div>
 
     <div class="container">
       <div class="row row-centered">
         <ul class="nav nav-pills col-xs-12 col-centered" style="line-height: 12px;">
-          <li ng-class="{ active: panel.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(1);showDay()" class="dayList">Day</a></li>
-          <li ng-class="{ active: panel.isSelected(2) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(2);showWeek()">Week</a></li>
+          <li ng-class="{ active: panel.isSelected(1) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(1);showDay();showWk=false" class="dayList">Day</a></li>
+          <li ng-class="{ active: panel.isSelected(2) }" class="text-center listSchedule"><a href="" ng-click="panel.selectTab(2);showWeek();showWk=true">Week</a></li>
         </ul>
     </div>
 

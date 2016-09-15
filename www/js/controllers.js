@@ -234,7 +234,34 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       $scope.events = data;
       $scope.setTimes();
     })
-  }})
+  }
+
+  $scope.changeWeek = function(n) {
+    $scope.week = {}
+    console.log("Calling change week");
+    $scope.events = {};
+    $scope.target.setDate($scope.target.getDate() + n);
+    $scope.targetDate = $scope.target.getFullYear() + '-' + ($scope.target.getMonth() + 1) + '-' + $scope.target.getDate();
+
+    var wreq = {
+      url: 'http://iamready.herokuapp.com/events/all/week/',
+      data: {
+        user_pk: localStorage.getItem('pk'),
+        date: $scope.targetDate
+      },
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
+    }
+
+    console.log(wreq);
+
+    $http(wreq).success(function(data) {
+      $scope.week = data;
+    })
+  }
+})
 
 .controller('TimeCtrl', function($scope, $http, $filter){
   var h = new Date().getHours();
