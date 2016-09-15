@@ -22,7 +22,7 @@
       <h1 class="text-center HomeNumber">{{today | date:'MMMM dd, yyyy'}}</h1>
     </div>
 
-    <a href="#/tab/task-view/{{ event.task.pk }}" ng-show="time === 'morning'" ng-hide="time != 'morning'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'morning'" ng-hide="time != 'morning'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -32,8 +32,8 @@
 
             <div class="col-md-7 homeTask" ng-show="time === 'morning'" ng-hide="time != 'morning'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time  | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
-              <h4 class="text-left topic">{{ event.title }}</h4>
+              <p class="text-left hour">{{ nextEvent.start_time  | date:'shortTime' }} - {{ nextEvent.end_time | date:'shortTime' }}</p>
+              <h4 class="text-left topic">{{ nextEvent.title }}</h4>
             </div>
 
             <div class="col-md-1">
@@ -44,7 +44,7 @@
       </div>
     </a>
 
-    <a href="#/tab/task-view/{{ event.task.pk }}" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -54,8 +54,8 @@
 
             <div class="col-md-7 homeTask" ng-show="time === 'afternoon'" ng-hide="time != 'afternoon'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time  | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
-              <h4 class="text-left topic">{{ event.title }}</h4>
+              <p class="text-left hour">{{ nextEvent.start_time  | date:'shortTime' }} - {{ nextEvent.end_time | date:'shortTime' }}</p>
+              <h4 class="text-left topic">{{ nextEvent.title }}</h4>
             </div>
 
             <div class="col-md-1">
@@ -66,7 +66,7 @@
       </div>
     </a>
 
-    <a href="#/tab/task-view/{{ event.task.pk }}" ng-show="time === 'night'" ng-hide="time != 'night'">
+    <a href="#/tab/task-view/{{ nextEvent.task.pk }}" ng-show="time === 'night'" ng-hide="time != 'night'">
       <div ng-class="timeBox" class="box">
         <div class="container-fluid">
           <div class="row">
@@ -76,8 +76,8 @@
 
             <div class="col-md-7 homeNightTask" ng-show="time === 'night'" ng-hide="time != 'night'">
               <h4 class="text-left up">UP NEXT:</h4>
-              <p class="text-left hour">{{ event.start_time | date:'shortTime' }} - {{ event.end_time | date:'shortTime' }}</p>
-              <h4 class="text-left topic">{{ event.title }}</h4>
+              <p class="text-left hour">{{ nextEvent.start_time | date:'shortTime' }} - {{ nextEvent.end_time | date:'shortTime' }}</p>
+              <h4 class="text-left topic">{{ nextEvent.title }}</h4>
             </div>
 
             <div class="col-md-1">

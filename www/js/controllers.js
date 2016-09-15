@@ -139,12 +139,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $http(req).success(function(data){
       $scope.events = data;
       $scope.setTimes();
-      console.log("Today's events", data);
-      var t = $scope.events.afternoon[0].start_time.split(":");
-      var d = new Date();
-      d.setHours(t[0]);
-      d.setMinutes(t[1]);
-      console.log(d);
     }).error(function(data) {
       console.log(data)
     })
@@ -155,7 +149,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     console.log(wreq);
@@ -170,7 +167,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(req).success(function(data){
@@ -184,7 +184,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     console.log(wreq)
@@ -221,7 +224,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         user_pk: localStorage.getItem('pk'),
         date: $scope.targetDate
       },
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(req).success(function(data){
@@ -246,20 +252,23 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     $scope.timeBox="nightBox";
     $scope.timeHeader="nightHeader";
   }
-  console.log(h);
-  console.log($scope.time);
 
-  var req = {
+  var nreq = {
         url: "http://iamready.herokuapp.com/events/task/next/",
         data: {
-            pk: 1,
+            pk: localStorage.getItem('pk'),
         },
-        method: "POST"
+        method: "POST",
+        headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
-    $http(req).success(function(data) {
-        $scope.event = data;
-        console.log(data);
+    console.log("Next,", nreq)
+
+    $http(nreq).success(function(data) {
+        $scope.nextEvent = data;
+        console.log("Next data",data);
         var start = toTime(data.start_time);
         var end = toTime(data.end_time);
         data.start_time = start;
@@ -295,7 +304,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     data: {
       pk: 1
     },
-    method: 'POST'
+    method: 'POST',
+    headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
   }
 
   $http(req).success(function(data){
@@ -319,7 +331,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     data: {
       pk: 1
     },
-    method: 'POST'
+    method: 'POST',
+    headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
   }
 
   $http(req).success(function(data){
@@ -333,7 +348,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       data: {
         pk: 1
       },
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(tts_req).success(function(data){
@@ -367,7 +385,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     data: {
       pk: 1
     },
-    method: 'POST'
+    method: 'POST',
+    headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
   }
 
   $http(req).success(function(data){
@@ -446,8 +467,12 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     url: 'http://iamready.herokuapp.com/events/task/one/',
     data: {
       pk: $stateParams.pk,
+      date: $stateParams.targetDate
     },
-    method: "POST"
+    method: "POST",
+    headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
   }
 
   console.log(req)
@@ -474,7 +499,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         task_pk: $scope.task.pk,
         step_pk: pk
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(sreq).success(function(data){
@@ -490,7 +518,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
         task_pk: $scope.task.pk,
         step_pk: pk
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(ureq).success(function(data){
@@ -505,7 +536,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       data: {
         pk: $stateParams.pk,
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     $http(tts_req).success(function(data){
@@ -533,7 +567,10 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       data: {
         pk: $stateParams.pk,
       },
-      method: "POST"
+      method: "POST",
+      headers: {
+        Authorization: 'JWT ' + localStorage.getItem('authToken')
+      }
     }
 
     console.log(tts_req);

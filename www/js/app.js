@@ -52,7 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.task-view', {
-    url: '/task-view/:pk',
+    url: '/task-view/:pk/:targetDate',
     views: {
       'tab-schedule': {
         templateUrl: 'templates/include/task-view.html',
