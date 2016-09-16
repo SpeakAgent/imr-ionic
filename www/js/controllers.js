@@ -73,6 +73,41 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     })
   }
 
+  $scope.setTimesWeek = function() {
+    console.log("Setting week times")
+    $scope.days_of_week.forEach(function(dow){
+      console.log(dow)
+      var tods = ['morning', 'afternoon', 'evening']
+      for (var ti in tods) {
+        var tod = tods[ti];
+        for (var i in $scope.week[dow][tod]) {
+          console.log($scope.week[dow][tod][i]);
+          var v = $scope.week[dow][tod][i].start_time.split(":")
+          if (parseInt(v[0]) > 12) {
+            h = String(parseInt(v[0]) - 12);
+            ap = "PM"
+          } else {
+            h = String(parseInt(v[0]))
+            ap = "AM"
+          }
+          $scope.week[dow][tod][i].start_time = h + ":" + v[1] + " " + ap;
+
+          var v = $scope.week[dow][tod][i].end_time.split(":")
+        
+
+          if (parseInt(v[0]) > 12) {
+            h = String(parseInt(v[0]) - 12);
+            ap = "PM"
+          } else {
+            h = String(parseInt(v[0]));
+            ap = "AM"
+          }
+          $scope.week[dow][tod][i].end_time = h + ":" + v[1] + " " + ap;
+        }
+      }
+    })
+  }
+
   function monitorhours(){
     $interval(function (){
       var newHour = new Date().getHours();
@@ -159,7 +194,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(wreq).success(function(data) {
       $scope.week = data;
-      console.log($scope.week)
+      console.log("week",$scope.week)
+      $scope.setTimesWeek();
     })
   } else {
     var req = {
@@ -195,6 +231,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(wreq).success(function(data) {
       $scope.week = data;
+      $scope.setTimesWeek();
     })
   }
 
@@ -260,6 +297,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(wreq).success(function(data) {
       $scope.week = data;
+      $scope.setTimesWeek();
     })
   }
 })
