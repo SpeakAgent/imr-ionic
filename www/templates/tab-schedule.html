@@ -17,8 +17,8 @@
           <h6 class="text-center weekInfo">{{ target | date:'MMMM dd, yyyy'}}</h6>
         </div>
 
-        <div class="col-xs-5 col-centered scheduleTitle" ng-show="showWk" ng-hide="getTod">
-          <h3 class="text-center">{{today | date:'EEEE'}}</h3>
+        <div class="col-xs-6 col-centered scheduleTitle" ng-show="showWk" ng-hide="getTod">
+          <h3 class="text-center">{{ week.first_day}} - {{ week.last_day }}</h3>
           <!-- <h6 ng-if="currentWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF {{ targetMonth | uppercase }} {{ targetDay }}</h6>
           <h6 ng-if="nextWeek" ng-show="showWk" ng-hide="showToday" class="text-center weekInfo">WEEK OF MAY 22</h6> -->
         </div>
