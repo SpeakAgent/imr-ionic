@@ -159,6 +159,7 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
 
     $http(wreq).success(function(data) {
       $scope.week = data;
+      console.log($scope.week)
     })
   } else {
     var req = {
@@ -524,7 +525,8 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       url: "http://iamready.herokuapp.com/events/step/update/",
       data: {
         task_pk: $scope.task.pk,
-        step_pk: pk
+        step_pk: pk,
+        date: $stateParams.targetDate
       },
       method: "POST",
       headers: {
@@ -532,8 +534,13 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       }
     }
 
+    console.log(sreq);
+
     $http(sreq).success(function(data){
       $scope.task.steps[stepNum].status = "done";
+    })
+    .error(function(data) {
+      console.log(data)
     })
   };
 
