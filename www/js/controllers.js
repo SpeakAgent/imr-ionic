@@ -563,8 +563,18 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
     })
   };
 
+  $scope.speakText = function(text) {
+      TTS.speak({
+        text: text,
+        locale: 'en-US',
+        rate: 1.5
+      }, function () {
+        console.log("SPEAK!!!");
+      });
+    }
+
   //TTS For Single Steps.
-  $scope.saySingle = function (index) {
+  $scope.saySingle = function (text) {
     var tts_req = {
       url: 'http://iamready.herokuapp.com/events/task/one/',
       data: {
@@ -581,16 +591,6 @@ var mainApp = angular.module('starter.controllers', ['ngMaterial', 'ngCordova', 
       var tts = $scope.task.steps[index].title;
       $scope.speakText(tts);
     })
-
-    $scope.speakText = function(text) {
-      TTS.speak({
-        text: text,
-        locale: 'en-US',
-        rate: 1.5
-      }, function () {
-        console.log("SPEAK!!!");
-      });
-    }
   }
 
   // TTS For All Steps.

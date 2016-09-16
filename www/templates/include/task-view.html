@@ -48,7 +48,7 @@
             <p>{{ task.steps[stepNum].title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
-              <a class="button button-small button-assertive speakButton valign speakView" ng-click="saySingle(stepNum)">
+              <a class="button button-small button-assertive speakButton valign speakView" ng-click="speakText( task.steps[stepNum].title)">
                 Listen
               </a>
             </div>
@@ -89,7 +89,7 @@
             <p>{{ step.title }}</p>
             <div class="col-xs-1">
               <img src="img/headphone.png" class="valign speaker">
-              <a class="button button-small button-assertive speakButton valign speakView" ng-click="sayAll($index)" ng-model="tts.current">
+              <a class="button button-small button-assertive speakButton valign speakView" ng-click="speakText(task.steps[$index].title)" ng-model="tts.current">
                 Listen
               </a>
             </div>
